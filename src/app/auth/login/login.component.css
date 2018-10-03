@@ -1,21 +1,21 @@
 .container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .container > * {
-    width: 100%;
-  }
-  .card {
-      max-width: 25%;
-      max-height: 500px;
-      margin: 50px auto;
-      border-radius: 10px;
-  }
-  .footer {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container > * {
+  width: 100%;
+}
+.card {
+  max-width: 25%;
+  max-height: 500px;
+  margin: 50px auto;
+  border-radius: 10px;
+}
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 .link {
   color: #4747d1;

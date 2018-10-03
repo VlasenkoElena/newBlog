@@ -42,10 +42,9 @@ a:active {
 }
 
 .icon {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    color: white;
-    z-index: 3;
+  position: fixed;
+  top: 10px;
+  left: 30px;
+  color: white;
+  z-index: 3;
 }
-
