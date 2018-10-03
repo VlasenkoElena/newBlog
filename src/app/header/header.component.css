@@ -1,0 +1,34 @@
+
+.toolbar {
+  background-color: #4747d1;
+}
+.logo {
+  width: 50px;
+  margin-left: 20px;
+  cursor: pointer;
+  outline: none;
+  color: white;
+}
+.fill-remaining-space {
+  flex: 1 1 auto;
+  color: white;
+  font-size: 30px;
+}
+.auth-link {
+  cursor: pointer;
+  margin-right: 20px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+}
+.auth-link:hover,
+.auth-link:active {
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+
+

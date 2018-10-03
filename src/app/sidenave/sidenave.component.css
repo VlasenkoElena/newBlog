@@ -1,0 +1,41 @@
+.app-nav {
+  position: absolute;
+  top:  50px;
+  bottom: 16px;
+  left: 8px;
+  right: 8px;
+}
+.wrapper {
+  background-color: #fff;
+  width: 50%;
+  text-align: left;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+a {
+  color: #422e3e;
+  padding: 10px 0;
+  display: inline-block;
+  min-width: 150px;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+/*a:hover,
+a.active {
+  color: ;
+  border-bottom-color: ;
+}
+
+.content {
+  background-color: #fbfbfb;
+}
+
+.create-post {
+  position: fixed;
+  background-color: ;
+  right: 50px;
+  bottom: 50px;
+}*/

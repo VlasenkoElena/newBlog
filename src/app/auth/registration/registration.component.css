@@ -1,0 +1,15 @@
+.card {
+    margin: 20px auto;
+    max-width: 400px;
+    max-height: 500px;
+    
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .footer {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }
