@@ -1,9 +1,11 @@
-<mat-sidenav-container class="app-nav">
-  <mat-sidenav mode="side" opened class="wrapper">
-    <a routerLink="" >Home</a>
-    <a routerLink="" >Posts</a>
-  </mat-sidenav>
-  <mat-sidenav-content class="content">
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<button class="icon" mat-icon-button (click)="drawer.toggle()">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="wrapper" mode="side">
+    <a mat-button routerLink="posts/my-post">Home</a>
+    <a mat-button routerLink="posts/all">Posts</a>
+    <a mat-button routerLink="posts/detail">Add Post</a>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>

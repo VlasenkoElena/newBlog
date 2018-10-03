@@ -1,41 +1,38 @@
 .app-nav {
   position: absolute;
-  top:  50px;
+  top: 50px;
   bottom: 16px;
   left: 8px;
   right: 8px;
 }
 .wrapper {
-  background-color: #fff;
-  width: 50%;
+  background-color: #4747d1;
+  width: 200px;
   text-align: left;
   padding-top: 30px;
   padding-left: 30px;
 }
 a {
-  color: #422e3e;
   padding: 10px 0;
-  display: inline-block;
+  color: white;
   min-width: 150px;
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
-  border-bottom: 3px solid transparent;
   cursor: pointer;
 }
-/*a:hover,
-a.active {
-  color: ;
-  border-bottom-color: ;
+.container {
+  margin-top: 60px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.content {
-  background-color: #fbfbfb;
+.icon {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: white;
+    z-index: 3;
 }
 
-.create-post {
-  position: fixed;
-  background-color: ;
-  right: 50px;
-  bottom: 50px;
-}*/

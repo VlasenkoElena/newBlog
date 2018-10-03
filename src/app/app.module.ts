@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenaveComponent } from './sidenave/sidenave.component';
+import { PostsService } from './shared/services/posts.servece';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { SidenaveComponent } from './sidenave/sidenave.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
