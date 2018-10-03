@@ -3,8 +3,10 @@
   <mat-toolbar class="toolbar">
     <img src="./assets/img/blog-icon.png" alt="" class="logo" [routerLink]="['posts/all']">
     <span class="fill-remaining-space"></span>
+    <button mat-icon-button class="icon" [routerLink]="['profile']">
+        <mat-icon>tag_faces</mat-icon>
+      </button>
     <a class="auth-link" [routerLink]="['auth/login']">Sign In</a>
-    <a class="auth-link"></a>
   </mat-toolbar>
 </header>
 

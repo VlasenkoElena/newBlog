@@ -1,0 +1,8 @@
+.content {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.example-card {
+    max-width: 400px;
+  }

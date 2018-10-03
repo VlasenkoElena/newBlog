@@ -1,0 +1,12 @@
+.card {
+    width: 40%;
+    margin: 40px auto;
+}
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.form-field {
+    width: 100%;
+}

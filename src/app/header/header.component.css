@@ -16,6 +16,10 @@
   outline: none;
   
 }
+.icon {
+  color: white;
+  margin: 10px 10px;
+}
 .fill-remaining-space {
   flex: 1 1 auto;
   color: white;
@@ -35,6 +39,7 @@
   padding: 5px;
   border: 1px solid white;
   border-radius: 10px;
+  transition: 0.3s;
 }
 
 
