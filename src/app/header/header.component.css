@@ -18,29 +18,27 @@
 }
 .icon {
   color: white;
-  margin: 10px 10px;
+  margin: 15px 10px;
 }
 .fill-remaining-space {
   flex: 1 1 auto;
   color: white;
-  font-size: 30px;
+  font: 300 30px 'Cinzel', serif;
 }
 .auth-link {
   cursor: pointer;
+  background:  #4747d1;
   margin-right: 20px;
-  color: white;
-  font-weight: 500;
-  font-size: 16px;
-  text-transform: uppercase;
-  border-bottom: 3px solid transparent;
-}
-.auth-link:hover,
-.auth-link:active {
-  padding: 5px;
-  border: 1px solid white;
+  color:  white;
   border-radius: 10px;
-  transition: 0.3s;
+  font-size: 16px;
 }
+.active {
+  background: white;
+  border: 1px solid #4747d1;
+  color: #4747d1;
+}
+
 
 
 

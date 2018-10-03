@@ -1,6 +1,6 @@
 .app-nav {
   position: absolute;
-  top: 50px;
+  top: 45px;
   bottom: 16px;
   left: 8px;
   right: 8px;
@@ -16,16 +16,20 @@
 }
 a {
   padding: 10px;
+  margin-top: 5px;
   width: 50%;
   color: white;
-  font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
   cursor: pointer;
 }
+.active {
+  background: white;
+  border-radius: 5px;
+  color: #4747d1;
+}
 a:hover,
 a:active {
-  padding: 5px;
   border: 1px solid white;
   border-radius: 10px;
   transition: 0.5s;

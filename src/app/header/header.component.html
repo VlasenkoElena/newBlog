@@ -1,12 +1,12 @@
 
 <header class="toolbar-wrapper">
   <mat-toolbar class="toolbar">
-    <img src="./assets/img/blog-icon.png" alt="" class="logo" [routerLink]="['posts/all']">
-    <span class="fill-remaining-space"></span>
-    <button mat-icon-button class="icon" [routerLink]="['profile']">
+    <img src="" alt="" class="logo" >
+    <span class="fill-remaining-space" [routerLink]="['posts/all']">Blog</span>
+    <button mat-icon-button class="icon" [routerLink]="['profile/profile']" routerLinkActive="active">
         <mat-icon>tag_faces</mat-icon>
       </button>
-    <a class="auth-link" [routerLink]="['auth/login']">Sign In</a>
+    <a class="auth-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" [routerLink]="['auth/login']">Sign In</a>
   </mat-toolbar>
 </header>
 
