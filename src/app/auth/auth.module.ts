@@ -5,6 +5,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthRoutingModule } from './auth.routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { MaterialModule } from '../material/material.module';
     AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   declarations: [LoginComponent, RegistrationComponent]
 })

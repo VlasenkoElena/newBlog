@@ -6,12 +6,14 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostsRoutingModule } from './posts.routing.module';
 import { MaterialModule } from '../material/material.module';
 import { PostComponent } from './post-index/post/post.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    PostsRoutingModule
+    PostsRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     PostIndexComponent, 

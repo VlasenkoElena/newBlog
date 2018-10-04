@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenaveComponent } from './sidenave/sidenave.component';
 import { PostsService } from './shared/services/posts.servece';
+import { AuthService } from './shared/services/auth.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,10 @@ import { PostsService } from './shared/services/posts.servece';
     MaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule
   ],
-  providers: [PostsService],
+  providers: [PostsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
