@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenaveComponent } from './sidenave/sidenave.component';
 import { PostsService } from './shared/services/posts.servece';
 import { AuthService } from './shared/services/auth.service'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AuthService } from './shared/services/auth.service'
     MaterialModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [PostsService, AuthService],
