@@ -12,7 +12,7 @@ export class PostsService {
     getPosts(): Observable<Post[]> {
         return this.http.get<Post[]>(`${environment.apiUrl}/api/posts`)
     }
-    getPostById(id:number): Observable<Post> {
+    getPostById(id: string): Observable<Post> {
         return this.http.get<Post>(`${environment.apiUrl}/api/posts/${id}`);
     }
     getMyPosts(): Observable<Post[]> {

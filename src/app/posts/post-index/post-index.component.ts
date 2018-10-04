@@ -16,7 +16,6 @@ export class PostIndexComponent implements OnInit {
    this.postsService.getPosts()
    .subscribe(data => {
      this.posts = data;
-     console.log(this.posts);
    }) 
   }
 
