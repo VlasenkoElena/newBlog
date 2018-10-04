@@ -12,7 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenaveComponent } from './sidenave/sidenave.component';
 import { PostsService } from './shared/services/posts.servece';
 import { AuthService } from './shared/services/auth.service'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JsonApiInterseptor } from './shared/interseptors/jsonapi.interseptors';
+import { TokenInterseptor } from './shared/interseptors/token-interseptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,20 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule
   ],
-  providers: [PostsService, AuthService],
+  providers: [
+    PostsService, 
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JsonApiInterseptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterseptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

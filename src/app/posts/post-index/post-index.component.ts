@@ -9,13 +9,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./post-index.component.css']
 })
 export class PostIndexComponent implements OnInit {
- posts: Observable<Post[]>
+ posts: Post[]
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
-    this.posts = this.postsService.getPosts()
-   console.log(this.posts);
-   
+   this.postsService.getPosts()
+   .subscribe(data => {
+     this.posts = data;
+     console.log(this.posts);
+   }) 
   }
 
 }
