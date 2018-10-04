@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { User } from "./../models/user.model";
 import { environment } from '../../../environments/environment';
 import { Observable } from "rxjs";
-import { map } from 'rxjs/operators';
+
 
 @Injectable()
 export class AuthService {

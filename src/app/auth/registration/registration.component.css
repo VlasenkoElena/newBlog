@@ -3,11 +3,10 @@
   max-width: 400px;
   max-height: 500px;
   border-radius: 10px;
-}
-.container {
   display: flex;
   flex-direction: column;
 }
+
 .footer {
   margin: 10px;
   display: flex;
