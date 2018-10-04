@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: column;
 }
+.container,
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
 
 .footer {
   margin: 10px;

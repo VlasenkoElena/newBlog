@@ -6,7 +6,7 @@
     <img mat-card-image>
     <mat-card-content>
       <p>
-        Some text
+        {{(post | async)?.body}}
       </p>
     </mat-card-content>
     <mat-card-actions>

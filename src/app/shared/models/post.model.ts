@@ -1,3 +1,3 @@
 export class Post {
-    body: string
+   constructor (public body: string){}
 }
