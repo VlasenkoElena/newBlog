@@ -11,25 +11,18 @@ import { ActivatedRoute, ParamMap, Params } from "@angular/router";
   styleUrls: ["./post-overview.component.css"]
 })
 export class PostOverviewComponent implements OnInit {
-  //post: Observable<Post>;
-  post: Post;
+  post: Observable<Post>;
+ 
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    /*this.post = this.route.params.pipe(
+    this.post = this.route.params.pipe(
       switchMap((params: Params) => {
         return  this.postsService.getPostById(params['id']);
       })
-    );*/
-    this.getPostId();
-  }
-  getPostId() {
-    let id = this.route.snapshot.paramMap.get("id");
-    this.postsService.getPostById(id).subscribe(data => {
-      this.post = data;
-    });
+    );
   }
 }
