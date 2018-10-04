@@ -1,6 +1,6 @@
 <mat-card class="card">
   <mat-card-content>
-    <form [formGroup]="registrationForm" class="container" (ngSubmit)="submitRegistrationForm()">
+    <form [formGroup]="registrationForm" class="container" (ngSubmit)="registrationForm()">
       <mat-form-field>
         <input matInput placeholder="Enter your email" formControlName="email">
         <!--<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
