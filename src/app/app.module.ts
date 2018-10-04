@@ -15,6 +15,7 @@ import { AuthService } from './shared/services/auth.service'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JsonApiInterseptor } from './shared/interseptors/jsonapi.interseptors';
 import { TokenInterseptor } from './shared/interseptors/token-interseptor';
+import { TokenService } from './shared/services/token.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TokenInterseptor } from './shared/interseptors/token-interseptor';
   providers: [
     PostsService, 
     AuthService,
+    TokenService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JsonApiInterseptor,

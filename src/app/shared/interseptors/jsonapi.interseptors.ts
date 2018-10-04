@@ -19,10 +19,7 @@ export class JsonApiInterseptor implements HttpInterceptor {
             map((event: HttpEvent<any>) => {
             if (event instanceof HttpResponse) {
                 let newEvent = event.clone({
-                    body: {
-                        data: this.jsona.deserialize(event.body as TJsonApiBody),
-                        meta: event.body.meta
-                    }
+                    body: this.jsona.deserialize(event.body as TJsonApiBody)
                 })
                 return newEvent
             }
