@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   signIn() {
     this.registrationForm = new FormGroup ({
       'email':  new FormControl('', [Validators.required, Validators.email]),
-      'password': new FormControl('', [Validators.required, Validators.minLength(5)]),
+      'password': new FormControl('', [Validators.required, Validators.minLength(8)]),
       'name': new FormControl('', [Validators.required])
     })
   }
