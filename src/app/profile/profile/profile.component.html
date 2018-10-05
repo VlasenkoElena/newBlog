@@ -1,14 +1,42 @@
 <mat-card class="card">
-  <mat-card-header>
-    <mat-card-title>Name</mat-card-title>
+  <mat-card-header class="head">
+    <img mat-card-avatar class="img" src="{{user?.avatar}}" alt="">
+    <mat-card-title class="title">{{user?.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="" alt="">
+  <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
   <mat-card-content>
-    <p>
-      e-mail
-    </p>
+    <p>{{user?.email}}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button [routerLink]="['/posts/all']">Go to posts</button>
   </mat-card-actions>
 </mat-card>
+
+<!--<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>
+      <h3>Your Profile</h3>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content *ngIf="profile">
+    <div class="profile-content">
+      <div class="profile-image" (click)="openModal()">
+        <img [src]="profile.avatar">
+      </div>
+      <div class="profile-info">
+        <label>Email:</label>
+        <p>{{profile.email}}</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ngwzp-modal>
+  <div class="modal-body">
+    <h3>Edit Profile Image</h3>
+    <img class="modal-image" *ngIf="newImage" [src]="newImage">
+    <div class="modal-data">
+      <input type="file" (change)="loadImage($event)">
+    </div>
+  </div>
+</ngwzp-modal>-->

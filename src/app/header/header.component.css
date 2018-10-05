@@ -9,12 +9,18 @@
 .toolbar {
   background-color: #4747d1;
 }
+p {
+  color: white;
+}
+h3 {
+  color: white;
+  font: 300 18px 'Cinzel', serif;
+}
 .logo {
   width: 50px;
   margin-left: 40px;
   cursor: pointer;
   outline: none;
-  
 }
 .icon {
   color: white;

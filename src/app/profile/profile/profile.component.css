@@ -1,5 +1,12 @@
 .card {
-    width: 500px;
+    width: 400px;
+    min-width: 400px;
     margin: 40px auto;
     border-radius: 10px;
+}
+.head {
+    margin-bottom: 20px;
+}
+.title {
+    margin: 10px;
 }

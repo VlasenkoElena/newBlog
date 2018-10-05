@@ -2,10 +2,15 @@
   <mat-toolbar class="toolbar">
     <img src="" alt="" class="logo">
     <span class="fill-remaining-space" [routerLink]="['posts/all']">Blog</span>
+    
+      <h3>{{(tokenService.mySubject | async)?.name}}</h3>
+    
     <button mat-icon-button class="icon" [routerLink]="['profile/profile']" routerLinkActive="active">
       <mat-icon>tag_faces</mat-icon>
     </button>
-    <a class="auth-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" [routerLink]="['auth/login']">Sign
+    <a class="auth-link"  routerLinkActive="active" [routerLink]="['auth/login']">Sign
       In</a>
+      <a class="auth-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" [routerLink]="['']">Sign
+        Out</a>
   </mat-toolbar>
 </header>

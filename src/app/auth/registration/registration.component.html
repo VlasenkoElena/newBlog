@@ -1,5 +1,5 @@
 <mat-card class="card">
-  <form [formGroup]="registrationForm" class="container" (ngSubmit)="registrationForm()">
+  <form [formGroup]="registrationForm" class="container" (ngSubmit)="registrationFormInfo()">
     <mat-card-content class="card-content">
       <mat-form-field>
         <input matInput placeholder="Enter your email" formControlName="email">
@@ -14,7 +14,7 @@
       </mat-form-field>
     </mat-card-content>
     <mat-card-footer class="footer">
-      <button class="footer-button" form="registrationForm" type="submit" mat-raised-button color="primary">Sign Up</button>
+      <button class="footer-button" type="submit" mat-raised-button color="primary">Sign Up</button>
     </mat-card-footer>
   </form>
 </mat-card>

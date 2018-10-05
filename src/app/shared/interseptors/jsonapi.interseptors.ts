@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Jsona } from 'jsona/lib';
 import { TJsonApiBody } from "jsona/lib/JsonaTypes";
-import { PostsService } from "../services/posts.servece";
+
 
 
 export class JsonApiInterseptor implements HttpInterceptor {
