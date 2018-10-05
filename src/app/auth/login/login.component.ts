@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (user) => {
         this.router.navigate(['posts/my-post'])
-        console.log(user);
       },
       (err) => console.log(err));    
   }

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { User } from "./../models/user.model";
 import { environment } from "../../../environments/environment";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, switchMap, switchMapTo } from "rxjs/operators";
 import { Jsona } from "jsona/lib";
 import { TokenService } from "./token.service";
 
@@ -22,10 +22,11 @@ export class AuthService {
       .post<any>(`${environment.apiUrl}/api/auth/sign_up`, newUser)
       .pipe(
         map(token => {
-            this.tokenService.setToken(token.auth_token);
-            console.log(token.auth_token);
-        })
+          this.tokenService.setToken(token.auth_token);
+        }),
+        switchMapTo(this.getProfile())
       );
+
   }
 
   logInUser(formData: User): Observable<any> {
@@ -36,9 +37,21 @@ export class AuthService {
       .post<any>(`${environment.apiUrl}/api/auth/sign_in`, newJson)
       .pipe(
         map(token => {
-           console.log(token.auth_token);  
-           this.tokenService.setToken(token.auth_token);
-        })
+          this.tokenService.setToken(token.auth_token);
+        }),
+        switchMapTo(this.getProfile())
       );
+  }
+
+  getProfile(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/api/profile`)
+    .pipe(
+      map(data => {
+        if (this.tokenService.getToken()) {
+           this.tokenService.mySubject.next(data);
+        }
+        return data;
+      })
+    );
   }
 }

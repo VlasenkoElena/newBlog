@@ -2,6 +2,8 @@
     max-width: 400px;
     width: 300px;
     border-radius: 10px;
+    flex-basis: 1/5;
+    margin: 10px;
   }
   .text {
     white-space: nowrap; 
