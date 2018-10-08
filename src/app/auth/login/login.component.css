@@ -2,6 +2,14 @@
   display: flex;
   flex-direction: column;
 }
+.name {
+  text-align: center;
+  font: 500 16px 'Cinzel', serif;
+  color: #4747d1;
+}
+p {
+  text-align: center;
+}
 
 .container > * {
   width: 100%;
@@ -15,9 +23,12 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .link {
   color: #4747d1;
   margin-top: 10px;
+}
+mat-form-field {
+  margin-top: 20px;
 }
