@@ -2,6 +2,14 @@
   display: flex;
   flex-direction: column;
 }
+.name {
+  text-align: center;
+  font: 500 16px 'Cinzel', serif;
+  color: #4747d1;
+}
+p {
+  text-align: center;
+}
 
 .container > * {
   width: 100%;

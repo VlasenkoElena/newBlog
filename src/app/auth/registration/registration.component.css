@@ -20,3 +20,11 @@
 .mat-form-field {
   margin-top: 20px;
 }
+.name {
+  text-align: center;
+  font: 500 18px 'Cinzel', serif;
+  color: #4747d1;
+}
+p {
+  text-align: center;
+}
