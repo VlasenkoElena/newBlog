@@ -15,9 +15,12 @@
 .footer {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .link {
   color: #4747d1;
   margin-top: 10px;
+}
+mat-form-field {
+  margin-top: 20px;
 }
