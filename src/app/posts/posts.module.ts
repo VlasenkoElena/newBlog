@@ -7,13 +7,15 @@ import { PostsRoutingModule } from './posts.routing.module';
 import { MaterialModule } from '../material/material.module';
 import { PostComponent } from './post-index/post/post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     PostsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PostIndexComponent, 

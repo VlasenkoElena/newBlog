@@ -3,10 +3,9 @@
   </button>
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="wrapper" mode="side">
-    <a routerLinkActive="active" routerLink="posts/my-post"
-    [routerLinkActiveOptions]="{exact:true}">Home</a>
-    <a  routerLinkActive="active" routerLink="posts/all">Posts</a>
-    <a routerLinkActive="active" routerLink="posts/detail">Add Post</a>
+    <a routerLinkActive="active" [routerLink]="['posts/my-post']">Home</a>
+    <a  routerLinkActive="active" [routerLink]="['posts/all']">Posts</a>
+    <a routerLinkActive="active" [routerLink]="['posts/detail']">Add Post</a>
   </mat-drawer>
   <router-outlet></router-outlet>
 </mat-drawer-container>

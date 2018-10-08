@@ -1,13 +1,16 @@
 <div class="card">
+  <form [formGroup]="createPost" (ngSubmit)="savePost()">
   <mat-card class="container">
     <mat-card-content>
       <mat-form-field class="form-field">
-        <textarea  matInput placeholder="Enter your post"></textarea>
+        <textarea formControlName="postBody" matInput placeholder="Enter your post"></textarea>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>Save</button>
-      <button mat-button [routerLink]="['/posts/all']">All posts</button>
+      
     </mat-card-actions>
   </mat-card>
+  </form>
+  <button mat-button [routerLink]="['/posts/all']">All posts</button>
 </div>
