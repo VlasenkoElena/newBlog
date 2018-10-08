@@ -49,7 +49,7 @@ export class AuthService {
       map(data => {
         if (this.tokenService.getToken()) {
            this.tokenService.mySubject.next(data);
-        }
+        }   
         return data;
       })
     );

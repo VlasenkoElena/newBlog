@@ -15,13 +15,14 @@ const routes: Routes = [
     component: PostIndexComponent
 },
 {
-    path: ':id',
-    component: PostOverviewComponent
-},
-{
     path: 'detail',
     component: PostDetailComponent
+},
+{
+    path: ':id',
+    component: PostOverviewComponent
 }
+
 ];
 
 @NgModule({

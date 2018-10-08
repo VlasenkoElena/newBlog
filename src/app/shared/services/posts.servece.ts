@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Post } from "../models/post.model";
 import { environment } from "../../../environments/environment";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { Jsona } from "jsona/lib";
 
 @Injectable()
@@ -21,10 +22,11 @@ export class PostsService {
   getMyPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/api/posts/my_post`);
   }
-  createNewPost(body): Observable<any> {
+  createNewPost(body): Observable<Post> {
     let newPost = this.jsona.serialize({
-        stuff: { ...body, type: "body" }
+        stuff: { ...body, type: "post" }
       });
-    return this.http.post<any>(`${environment.apiUrl}/api/posts`, newPost)
+      console.log(newPost);
+      return this.http.post<Post>(`${environment.apiUrl}/api/posts`, newPost);
   }
 }

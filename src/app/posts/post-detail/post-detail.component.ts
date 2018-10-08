@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostsService } from '../../shared/services/posts.servece';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-detail',
@@ -11,11 +12,12 @@ export class PostDetailComponent implements OnInit {
   createPost: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private postsService: PostsService) { }
+              private postsService: PostsService,
+              private router: Router) { }
 
   ngOnInit() {
     this.createPost = this.fb.group({
-      postBody: ['', Validators.required]
+      body: ['', Validators.required]
     })
     console.log(this.createPost);
     
@@ -25,8 +27,9 @@ export class PostDetailComponent implements OnInit {
     let body = this.createPost.value;
     this.postsService.createNewPost(body)
     .subscribe(post => {
+      this.router.navigate(["posts/my-post"]);
       console.log(post); 
-    } )
+    })
   
   }
 
