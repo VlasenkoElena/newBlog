@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   });
   }
 
-  Edit() {
+  editAvatar() {
     this.show = true;
   }
 }
