@@ -1,10 +1,10 @@
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
-import { TokenService } from "../services/token.service";
-import { Observable } from "rxjs";
-import { Injectable } from "@angular/core";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { TokenService } from '../services/token.service';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable()
-export class TokenInterseptor implements HttpInterceptor{
+export class TokenInterseptor implements HttpInterceptor {
 
     constructor(public tokenService: TokenService) {}
 
@@ -13,8 +13,7 @@ export class TokenInterseptor implements HttpInterceptor{
             setHeaders: {
                 Authorization: `Bearer ${this.tokenService.getToken()}`
             }
-        }); 
-        console.log(req.headers);
-        return next.handle(req)
-    }  
+        });
+        return next.handle(req);
+    }
 }

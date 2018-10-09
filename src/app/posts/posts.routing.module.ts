@@ -1,27 +1,36 @@
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import { PostOverviewComponent } from "./post-overview/post-overview.component";
-import { PostDetailComponent } from "./post-detail/post-detail.component";
-import { NgModule } from "@angular/core";
-import { PostIndexComponent } from "./post-index/post-index.component";
+import { PostOverviewComponent } from './post-overview/post-overview.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostIndexComponent } from './post-index/post-index.component';
+import { ProfileGuard } from '../shared/guards/profile.guard';
 
 const routes: Routes = [
-{
+  {
     path: 'all',
     component: PostIndexComponent
-},
-{
+  },
+  {
     path: 'my-post',
-    component: PostIndexComponent
-},
-{
+    component: PostIndexComponent,
+    canActivate: [ProfileGuard]
+  },
+  {
+    path: 'detail',
+    component: PostDetailComponent,
+    canActivate: [ProfileGuard]
+  },
+
+  {
     path: ':id',
     component: PostOverviewComponent
-},
-{
-    path: 'detail',
-    component: PostDetailComponent
-}
+  },
+  {
+    path: 'detail/:id',
+    component: PostDetailComponent,
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

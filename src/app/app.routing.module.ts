@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes  } from '@angular/router';
+import { ProfileGuard } from './shared/guards/profile.guard';
 
 const routes: Routes = [
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: './profile/profile.module#ProfileModule'
+    loadChildren: './profile/profile.module#ProfileModule',
+    canActivate: [ProfileGuard]
   }
 ];
 

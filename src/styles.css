@@ -1,9 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html,
-body {
-  height: 100%;
-}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,3 +11,9 @@ body {
 a {
   text-decoration: none;
 }
+p {
+  font: 16px/20px 'Roboto', sans-serif;
+  letter-spacing: .1px;
+  padding: 10px;
+}
+

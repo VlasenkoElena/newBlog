@@ -11,11 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenaveComponent } from './sidenave/sidenave.component';
 import { PostsService } from './shared/services/posts.servece';
-import { AuthService } from './shared/services/auth.service'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './shared/services/auth.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JsonApiInterseptor } from './shared/interseptors/jsonapi.interseptors';
 import { TokenInterseptor } from './shared/interseptors/token-interseptor';
 import { TokenService } from './shared/services/token.service';
+import { ProfileGuard } from './shared/guards/profile.guard';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { TokenService } from './shared/services/token.service';
     FormsModule
   ],
   providers: [
-    PostsService, 
+    PostsService,
     AuthService,
     TokenService,
+    ProfileGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JsonApiInterseptor,

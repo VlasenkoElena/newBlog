@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './shared/services/auth.service';
+import { TokenService } from './shared/services/token.service';
 
 
 
@@ -9,10 +10,11 @@ import { AuthService } from './shared/services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- 
-  constructor(private authService: AuthService) {}
-  
+
+  constructor(private authService: AuthService, private tokenService: TokenService) {}
   ngOnInit() {
+    if (this.tokenService.isLogIn()) {
     this.authService.getProfile().subscribe();
+    }
   }
 }
