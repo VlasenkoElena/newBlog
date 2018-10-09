@@ -21,7 +21,7 @@ export class PostsService {
     return this.http.get<Post>(`${environment.apiUrl}/api/posts/${id}`);
   }
   getMyPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.apiUrl}/api/posts/my_post`);
+    return this.http.get<Post[]>(`${environment.apiUrl}/api/my_posts`);
   }
   delPost(id: string) {
       return this.http.delete(`${environment.apiUrl}/api/posts/${id}`);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../shared/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +9,12 @@ import { TokenService } from '../shared/services/token.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public tokenService: TokenService) { }
+  constructor(public tokenService: TokenService, private router: Router) { }
 
   ngOnInit() {
-   
   }
 
+  logOut() {
+    this.tokenService.delToken();
+  }
 }

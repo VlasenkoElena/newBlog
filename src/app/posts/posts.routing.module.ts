@@ -14,6 +14,7 @@ const routes: Routes = [
   {
     path: 'my-post',
     component: PostIndexComponent,
+    canActivate: [ProfileGuard]
   },
   {
     path: 'detail',

@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent,  HttpHandler,  HttpInterceptor,  HttpRequest,   HttpResponse,  } from '@angular/common/http';
 
-import { Observable, of as observableOf, EMPTY } from 'rxjs';
+import { Observable, of as observableOf, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Jsona } from 'jsona/lib';
@@ -35,6 +35,6 @@ export class JsonApiInterseptor implements HttpInterceptor {
             this.router.navigate(['auth/login']);
            return observableOf({});
         }
-        return Observable.throw(err);
+        return throwError(err);
     }
 }
