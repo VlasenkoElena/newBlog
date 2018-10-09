@@ -3,7 +3,11 @@
   <mat-card class="container">
     <mat-card-content>
       <mat-form-field class="form-field">
-        <textarea formControlName="body" matInput placeholder="Enter your post"></textarea>
+        <textarea rows="10" 
+        formControlName="body" 
+        matInput 
+        placeholder="Enter your post">
+        {{(post | async)?.body}}</textarea>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  ActivatedRoute, Params, Router } from '@angular/router';
+
+import { Post } from '../../shared/models/post.model';
 import { PostsService } from '../../shared/services/posts.servece';
-import { Router } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-detail',
@@ -10,27 +13,50 @@ import { Router } from '@angular/router';
 })
 export class PostDetailComponent implements OnInit {
   createPost: FormGroup;
+  post: Post;
+  id;
 
   constructor(private fb: FormBuilder,
               private postsService: PostsService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.createPost = this.fb.group({
       body: ['', Validators.required]
-    })
-    console.log(this.createPost);
-    
+    });
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) {
+    this.getId();
+    }
+  }
+
+  getId() {
+    this.route.params.pipe(
+      switchMap((params: Params) => {
+        return this.postsService.getPostById(params['id']);
+      })
+    ).subscribe(data => {
+      this.createPost.get('body').setValue(data.body);
+    });
   }
 
   savePost() {
-    let body = this.createPost.value;
-    this.postsService.createNewPost(body)
+    const body = this.createPost.value;
+    if (this.id) {
+      console.log(this.id);
+      this.postsService.editPost(this.id, body)
+      .subscribe(post => {
+        this.router.navigate(['posts/my-post']);
+       console.log(post);
+      });
+    } else {
+      this.postsService.createNewPost(body)
     .subscribe(post => {
-      this.router.navigate(["posts/my-post"]);
-      console.log(post); 
-    })
-  
+      this.router.navigate(['posts/my-post']);
+      console.log('hi');
+    });
   }
+ }
 
 }

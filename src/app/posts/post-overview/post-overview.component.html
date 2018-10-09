@@ -11,7 +11,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button [routerLink]="['/posts/all']">Back</button>
-      <button mat-button [routerLink]="['/posts/all']">Edit</button>
+      <button mat-button [routerLink]="['/posts/detail', (post | async)?.id]">Edit</button>
     </mat-card-actions>
   </mat-card>
 </div>

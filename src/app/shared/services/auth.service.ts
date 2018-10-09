@@ -1,11 +1,13 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { User } from "./../models/user.model";
-import { environment } from "../../../environments/environment";
-import { Observable } from "rxjs";
-import { map, switchMap, switchMapTo } from "rxjs/operators";
-import { Jsona } from "jsona/lib";
-import { TokenService } from "./token.service";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs';
+import { map, switchMapTo } from 'rxjs/operators';
+import { Jsona } from 'jsona/lib';
+
+import { TokenService } from './token.service';
+import { User } from './../models/user.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -15,8 +17,8 @@ export class AuthService {
   }
 
   createNewUser(user: User): Observable<any> {
-    let newUser = this.jsona.serialize({
-      stuff: { ...user, type: "user" }
+    const newUser = this.jsona.serialize({
+      stuff: { ...user, type: 'user' }
     });
     return this.http
       .post<any>(`${environment.apiUrl}/api/auth/sign_up`, newUser)
@@ -30,8 +32,8 @@ export class AuthService {
   }
 
   logInUser(formData: User): Observable<any> {
-    let newJson = this.jsona.serialize({
-      stuff: { ...formData, type: "user" }
+    const newJson = this.jsona.serialize({
+      stuff: { ...formData, type: 'user' }
     });
     return this.http
       .post<any>(`${environment.apiUrl}/api/auth/sign_in`, newJson)
@@ -49,7 +51,7 @@ export class AuthService {
       map(data => {
         if (this.tokenService.getToken()) {
            this.tokenService.mySubject.next(data);
-        }   
+        }
         return data;
       })
     );

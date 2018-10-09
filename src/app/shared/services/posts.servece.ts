@@ -1,10 +1,11 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Post } from "../models/post.model";
-import { environment } from "../../../environments/environment";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { Jsona } from "jsona/lib";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Jsona } from 'jsona/lib';
+import { Observable } from 'rxjs';
+
+import { environment } from '../../../environments/environment';
+import { Post } from '../models/post.model';
 
 @Injectable()
 export class PostsService {
@@ -22,11 +23,21 @@ export class PostsService {
   getMyPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/api/posts/my_post`);
   }
+  delPost(id: string) {
+      return this.http.delete(`${environment.apiUrl}/api/posts/${id}`);
+  }
   createNewPost(body): Observable<Post> {
-    let newPost = this.jsona.serialize({
-        stuff: { ...body, type: "post" }
+    const newPost = this.jsona.serialize({
+        stuff: { ...body, type: 'post' }
       });
       console.log(newPost);
       return this.http.post<Post>(`${environment.apiUrl}/api/posts`, newPost);
+  }
+
+  editPost(id: string, body): Observable<any> {
+    const editPost = this.jsona.serialize({
+      stuff: { ...body, type: 'post' }
+    });
+    return  this.http.put<any>(`${environment.apiUrl}/api/posts/${id}`, editPost);
   }
 }

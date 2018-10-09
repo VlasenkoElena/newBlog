@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MaterialModule } from '../material/material.module';
+
 import { PostIndexComponent } from './post-index/post-index.component';
 import { PostOverviewComponent } from './post-overview/post-overview.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostsRoutingModule } from './posts.routing.module';
-import { MaterialModule } from '../material/material.module';
 import { PostComponent } from './post-index/post/post.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
@@ -18,9 +21,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   declarations: [
-    PostIndexComponent, 
-    PostOverviewComponent, 
-    PostDetailComponent, 
+    PostIndexComponent,
+    PostOverviewComponent,
+    PostDetailComponent,
     PostComponent
   ]
 })
