@@ -2,8 +2,13 @@
     max-width: 400px;
     width: 300px;
     border-radius: 10px;
-    flex-basis: 1/5;
+    flex-basis: 1/2;
     margin: 10px;
+  }
+  .card:hover {
+    transform: scale(1.1,1.1);
+    transition-timing-function: ease-out;
+    transition-duration: 550ms;
   }
   .text {
     white-space: nowrap; 
@@ -11,3 +16,4 @@
     padding: 5px; 
     text-overflow: ellipsis; 
   }
+

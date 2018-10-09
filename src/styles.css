@@ -14,4 +14,9 @@ body {
 a {
   text-decoration: none;
 }
+p {
+  font: 16px/20px 'Roboto', sans-serif;
+  letter-spacing: .1px;
+  padding: 10px;
+}
 

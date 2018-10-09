@@ -9,9 +9,8 @@ import { AuthService } from './shared/services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- 
+
   constructor(private authService: AuthService) {}
-  
   ngOnInit() {
     this.authService.getProfile().subscribe();
   }

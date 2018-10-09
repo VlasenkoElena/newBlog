@@ -8,11 +8,16 @@ export class TokenService {
     constructor() {
         this.mySubject = new BehaviorSubject({});
     }
+
     public setToken(token) {
         return localStorage.setItem('auth_token', token);
     }
     public getToken() {
         return localStorage.getItem('auth_token');
+    }
+
+    public isLogIn() {
+        return this.getToken() !== null;
     }
     public del() {
         return localStorage.removeItem('auth_token');
