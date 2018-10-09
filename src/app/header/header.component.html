@@ -8,7 +8,7 @@
     <button mat-icon-button class="icon" [routerLink]="['profile/profile']" routerLinkActive="active">
       <mat-icon>tag_faces</mat-icon>
     </button>
-    <a class="auth-link"  routerLinkActive="active" [routerLink]="['auth/login']">Sign
+    <a class="auth-link"  routerLinkActive="active" (click)="goToLogin()" [routerLink]="['auth/login']">Sign
       In</a>
       <button mat-icon-button class="icon" [routerLink]="['posts/all']" routerLinkActive="active" (click)="logOut()">
         <mat-icon>exit_to_app</mat-icon>

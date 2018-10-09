@@ -17,4 +17,10 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.tokenService.delToken();
   }
+
+  goToLogin() {
+    if (this.tokenService.isLogIn()) {
+     this.router.navigate(['profile/profile']);
+    }
+  }
 }
