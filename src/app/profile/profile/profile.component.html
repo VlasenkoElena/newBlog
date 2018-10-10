@@ -7,14 +7,12 @@
   </mat-card-header>
   <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
   <mat-card-content class="content">
-    <div>
       <div class="wrapper-img">
       <img  class="img" src="{{user?.avatar}}" alt="">
       </div>
       <div *ngIf="show" class="input">
         <input type="file" (change)="loadImg($event)" multiple>
       </div>
-    </div>
     <p>E-mail: {{user?.email}}</p>
   </mat-card-content>
   <mat-card-actions class="btn">
