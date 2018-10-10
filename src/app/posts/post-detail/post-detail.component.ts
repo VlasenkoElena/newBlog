@@ -54,7 +54,6 @@ export class PostDetailComponent implements OnInit {
       this.postsService.createNewPost(body)
     .subscribe(post => {
       this.router.navigate(['posts/my-post']);
-      console.log('hi');
     });
   }
  }

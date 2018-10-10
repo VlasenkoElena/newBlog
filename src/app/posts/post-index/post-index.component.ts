@@ -24,11 +24,12 @@ export class PostIndexComponent implements OnInit {
     if (this.tokenService.getToken()) {
       this.postsService.getMyPosts().subscribe(data => {
         console.log(data, 'mypost');
+        this.posts = data;
       });
     }
-      this.postsService.getPosts().subscribe(data => {
+      /*this.postsService.getPosts().subscribe(data => {
         this.posts = data;
         console.log(this.posts, 'all');
-      });
+      });*/
   }
 }

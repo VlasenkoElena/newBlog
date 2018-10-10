@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
         user => {
           this.router.navigate(['posts/my-post']);
         },
-        err => console.log(err)
+        err => {
+          console.log(err);
+          alert('Something went wrong. Please try again');
+        }
       );
     }
   }

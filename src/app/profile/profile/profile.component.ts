@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { User } from '../../shared/models/user.model';
 import { TokenService } from '../../shared/services/token.service';
-
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,16 +14,27 @@ import { TokenService } from '../../shared/services/token.service';
 export class ProfileComponent implements OnInit {
   user: Observable<User>;
   show = false;
-  constructor(public tokenService: TokenService) {}
+  file: File;
+  constructor(
+    public tokenService: TokenService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-  this.tokenService.mySubject.
-  subscribe(data => {
-    this.user = data;
-  });
+    this.tokenService.mySubject.subscribe(data => {
+      this.user = data;
+    });
   }
-
-  Edit() {
+  editAvatar() {
     this.show = true;
   }
-}
+
+  loadImg(event) {
+    this.file = event.target.files[0];
+    console.log(this.file);
+    this.authService.editAvatar(this.file).subscribe(data => {
+      this.user = data;
+    });
+    this.show = false;
+   }
+  }
