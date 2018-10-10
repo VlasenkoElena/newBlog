@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { map, switchMapTo } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, switchMapTo } from 'rxjs/operators';
 import { Jsona } from 'jsona/lib';
 
 import { TokenService } from './token.service';
@@ -26,7 +26,11 @@ export class AuthService {
         map(token => {
           this.tokenService.setToken(token.auth_token);
         }),
-        switchMapTo(this.getProfile())
+        switchMapTo(this.getProfile()),
+        catchError(err => {
+          console.log(err);
+          return throwError('Something bad happened; please try again later.');
+        })
       );
   }
 
@@ -40,7 +44,11 @@ export class AuthService {
         map(token => {
           this.tokenService.setToken(token.auth_token);
         }),
-        switchMapTo(this.getProfile())
+        switchMapTo(this.getProfile()),
+        catchError(err => {
+          console.log(err);
+          return throwError('Something bad happened; please try again later.');
+        })
       );
   }
 
@@ -59,6 +67,13 @@ export class AuthService {
     console.log(file);
     const newImg = new FormData();
     newImg.append('avatar', file);
-    return this.http.put<any>(`${environment.apiUrl}/api/profile/avatar`, newImg);
+    return this.http.put<any>(
+      `${environment.apiUrl}/api/profile/avatar`,
+      newImg
+    );
+  }
+
+  handleError(error: HttpErrorResponse) {
+    return throwError('Something bad happened; please try again later.');
   }
 }

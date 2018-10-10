@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  error;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -24,18 +25,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const formData = this.loginForm.value;
+    let formData = this.loginForm.value;
     if (formData) {
       this.authService.logInUser(formData).subscribe(
         user => {
           this.router.navigate(['posts/my-post']);
         },
         err => {
-          console.log(err);
+          this.error = err.getErrorMessage();
+          console.log(this.error);
           alert('Something went wrong. Please try again');
         }
       );
     }
+    formData = null;
   }
   getErrorMessage() {
     return this.loginForm.get('email').hasError('required')
