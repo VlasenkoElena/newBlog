@@ -55,7 +55,8 @@ export class AuthService {
     );
   }
 
-  editAvatar(file): Observable<any> {
+  editAvatar(file: File): Observable<any> {
+    console.log(file);
     const newImg = new FormData();
     newImg.append('avatar', file);
     return this.http.put<any>(`${environment.apiUrl}/api/profile/avatar`, newImg);

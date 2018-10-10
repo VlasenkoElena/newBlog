@@ -14,7 +14,7 @@ import { AuthService } from '../../shared/services/auth.service';
 export class ProfileComponent implements OnInit {
   user: Observable<User>;
   show = false;
-  file;
+  file: File;
   constructor(
     public tokenService: TokenService,
     private authService: AuthService
@@ -24,19 +24,17 @@ export class ProfileComponent implements OnInit {
     this.tokenService.mySubject.subscribe(data => {
       this.user = data;
     });
-    this.saveNewAvatar();
   }
   editAvatar() {
     this.show = true;
   }
+
   loadImg(event) {
     this.file = event.target.files[0];
     console.log(this.file);
-  }
-  saveNewAvatar() {
     this.authService.editAvatar(this.file).subscribe(data => {
       this.user = data;
     });
     this.show = false;
+   }
   }
-}

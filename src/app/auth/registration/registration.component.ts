@@ -41,7 +41,10 @@ export class RegistrationComponent implements OnInit {
           this.router.navigate(['posts/my-post']);
           console.log(user);
         },
-        err => console.log(err)
+        err => {
+          console.log(err);
+          alert('Something went wrong. Please try again');
+        }
       );
     }
   }
