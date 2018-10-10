@@ -9,10 +9,11 @@
 }
 .title {
     margin: 10px;
+    font-size: 20px;
 }
 .content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 .input {
@@ -20,4 +21,18 @@ margin-top: 10px;
 }
 .btn {
     text-align: center;
+}
+.wrapper-img {
+  width: 130px;
+  height: 130px;
+  margin-left: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+ display: flex;
+ justify-content: center;
+}
+.img {
+    width: auto;
+    height: 100%;
+    margin: auto;
 }

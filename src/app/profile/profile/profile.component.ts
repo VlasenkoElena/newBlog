@@ -24,8 +24,8 @@ export class ProfileComponent implements OnInit {
     this.tokenService.mySubject.subscribe(data => {
       this.user = data;
     });
+    this.saveNewAvatar();
   }
-
   editAvatar() {
     this.show = true;
   }
@@ -35,7 +35,8 @@ export class ProfileComponent implements OnInit {
   }
   saveNewAvatar() {
     this.authService.editAvatar(this.file).subscribe(data => {
-      console.log(data);
+      this.user = data;
     });
+    this.show = false;
   }
 }
