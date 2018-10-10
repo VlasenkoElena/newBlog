@@ -16,6 +16,7 @@ export class PostDetailComponent implements OnInit {
   post: Post;
   id;
   file: File;
+  newPost;
 
   constructor(private fb: FormBuilder,
               private postsService: PostsService,
@@ -26,6 +27,7 @@ export class PostDetailComponent implements OnInit {
     this.createPost = this.fb.group({
       body: ['', Validators.required]
     });
+    this.newPost = this.route.snapshot.data['isNewPost'];
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
     this.getId();

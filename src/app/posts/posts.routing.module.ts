@@ -22,7 +22,10 @@ const routes: Routes = [
   {
     path: 'detail',
     component: PostDetailComponent,
-    canActivate: [ProfileGuard]
+    canActivate: [ProfileGuard],
+    data: {
+      isNewPost: true
+    }
   },
 
   {
