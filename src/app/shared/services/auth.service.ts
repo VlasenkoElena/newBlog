@@ -28,7 +28,6 @@ export class AuthService {
         }),
         switchMapTo(this.getProfile())
       );
-
   }
 
   logInUser(formData: User): Observable<any> {
@@ -46,14 +45,19 @@ export class AuthService {
   }
 
   getProfile(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/api/profile`)
-    .pipe(
+    return this.http.get<any>(`${environment.apiUrl}/api/profile`).pipe(
       map(data => {
         if (this.tokenService.getToken()) {
-           this.tokenService.mySubject.next(data);
+          this.tokenService.mySubject.next(data);
         }
         return data;
       })
     );
+  }
+
+  editAvatar(file): Observable<any> {
+    const newImg = new FormData();
+    newImg.append('myFile', file);
+    return this.http.put(`${environment.apiUrl}/api/profile/avatar`, newImg);
   }
 }
