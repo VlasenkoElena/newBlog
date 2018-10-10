@@ -8,7 +8,7 @@
   <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
   <mat-card-content class="content">
       <div class="wrapper-img">
-      <img  class="img" src="{{user?.avatar}}" alt="">
+      <img  class="img" src="{{user?.avatar}}">
       </div>
       <div *ngIf="show" class="input">
         <input type="file" (change)="loadImg($event)" multiple>

@@ -40,4 +40,10 @@ export class PostsService {
     });
     return  this.http.put<any>(`${environment.apiUrl}/api/posts/${id}`, editPost);
   }
+
+   addImg(id: string, img: File): Observable<any> {
+     const postImg = new FormData();
+     postImg.append('image', img);
+     return this.http.put<any>(`${environment.apiUrl}/api/posts/${id}/image`, postImg);
+  }
 }

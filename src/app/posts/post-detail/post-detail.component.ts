@@ -15,6 +15,7 @@ export class PostDetailComponent implements OnInit {
   createPost: FormGroup;
   post: Post;
   id;
+  file: File;
 
   constructor(private fb: FormBuilder,
               private postsService: PostsService,
@@ -38,9 +39,19 @@ export class PostDetailComponent implements OnInit {
       })
     ).subscribe(data => {
       this.createPost.get('body').setValue(data.body);
+      this.post = data;
     });
   }
 
+  loadImg(event) {
+    this.file = event.target.files[0];
+    console.log(this.file);
+    this.postsService.addImg(this.id, this.file)
+    .subscribe(
+      data => {
+      this.post = data;
+    });
+  }
   savePost() {
     const body = this.createPost.value;
     if (this.id) {

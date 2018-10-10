@@ -7,9 +7,10 @@
       <mat-card-content>
         <mat-form-field class="form-field">
           <textarea formControlName="body" matInput placeholder="Enter your post">
-        {{(post | async)?.body}}</textarea>
+        {{post?.body}}</textarea>
         </mat-form-field>
-        <div>
+        <img mat-card-image src="{{post?.image}}">
+        <div class="file-upload">
         <input type="file" (change)="loadImg($event)" multiple>
         </div>
       </mat-card-content>

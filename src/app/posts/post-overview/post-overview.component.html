@@ -2,8 +2,8 @@
   <mat-card class="example-card">
     <mat-card-header>
     </mat-card-header>
-    <img mat-card-image src="{{(post | async)?.img}}" alt="Photo">
     <mat-card-content>
+      <img mat-card-image src="{{(post | async)?.image}}">
       <p>
         {{(post | async)?.body}}
       </p>
