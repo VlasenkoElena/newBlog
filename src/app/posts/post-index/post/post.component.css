@@ -1,27 +1,28 @@
 .card {
   flex-grow: 1;
-  flex-basis: 300px; 
-    width: 300px;
-    border-radius: 10px;
-    margin: 20px;
-  }
-  .img-container {
-max-height: 250px
-  }
-   img {
-     max-height: 250px;
-    overflow: hidden;
-    border-radius: 3px; 
-  }
-  .card:hover {
-    transform: scale(1.1,1.1);
-    transition-timing-function: ease-out;
-    transition-duration: 550ms;
-  }
-  .text {
-    white-space: nowrap; 
-    overflow: hidden; 
-    padding: 5px; 
-    text-overflow: ellipsis; 
-  }
-
+  flex-basis: 300px;
+  width: 300px;
+  border-radius: 10px;
+  margin: 20px;
+}
+.img-container {
+  max-height: 250px;
+}
+img {
+  max-height: 250px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.card:hover {
+  transform: scale(1.1, 1.1);
+  transition-timing-function: ease-out;
+  transition-duration: 550ms;
+}
+.text {
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 5px;
+  text-overflow: ellipsis;
+  font: 16px/20px "Roboto", sans-serif;
+  letter-spacing: 0.5px;
+}

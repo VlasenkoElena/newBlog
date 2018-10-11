@@ -3,18 +3,20 @@
     <mat-card class="container">
       <mat-card-content>
         <mat-form-field class="form-field">
-          <textarea formControlName="body" matInput placeholder="Enter your post">
+          <textarea  formControlName="body" matInput placeholder="Enter your post">
         {{post?.body}}</textarea>
         </mat-form-field>
         <img mat-card-image src="{{post?.image}}">
         <div class="file-upload">
-        <input type="file" (change)="loadImg($event)" multiple>
+        <label for="file">Choose a file</label> 
+        <input type="file" name="file" (change)="loadImg($event)" multiple class="inputfile" id="file">
+        <button mat-button type="button" *ngIf="!newPost" (click)="delImg()">Delete img</button>
         </div>
       </mat-card-content>
       <mat-card-actions class="footer">
         <button mat-button color="primary">Save</button>
-        <button mat-button color="primary" [routerLink]="['/posts/all']">All posts</button>
-        <button mat-button color="primary" *ngIf="!newPost" [routerLink]="['/posts/all']" (click)="delPost()">Delete</button>
+        <button mat-button type="button" color="primary" [routerLink]="['/posts/all']">All posts</button>
+        <button mat-button type="button" color="primary" *ngIf="!newPost" [routerLink]="['/posts/all']" (click)="delPost()">Delete</button>
       </mat-card-actions>
     </mat-card>
   </form>
