@@ -1,7 +1,6 @@
 .content {
   margin-top: 30px;
   display: flex;
-  flex-basis: 1/2;
   flex-wrap: wrap;
   justify-content: center;
  

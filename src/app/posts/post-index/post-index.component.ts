@@ -21,6 +21,7 @@ export class PostIndexComponent implements OnInit {
 
   ngOnInit() {
     this.myPost = this.route.snapshot.data['isMyPost'];
+    console.log(this.myPost);
     this.getPost();
     if (this.myPost) {
       this.getMyPost();
@@ -30,6 +31,7 @@ export class PostIndexComponent implements OnInit {
   getPost() {
       this.postsService.getPosts().subscribe(data => {
         this.posts = data;
+        console.log(this.posts);
       });
   }
   getMyPost() {

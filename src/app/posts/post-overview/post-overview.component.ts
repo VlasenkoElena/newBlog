@@ -18,6 +18,7 @@ export class PostOverviewComponent implements OnInit {
   post: Observable<Post>;
   show = false;
   editPost;
+  id;
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,
@@ -30,8 +31,14 @@ export class PostOverviewComponent implements OnInit {
         return  this.postsService.getPostById(params['id']);
       })
     );
-    if (this.tokenService.isLogIn()) {
+    if (this.id) {
       this.show = true;
     }
+  }
+  getMyPost() {
+    this.postsService.getMyPosts().subscribe(data => {
+      this.id = data[1];
+      console.log(this.id);
+    });
   }
 }
