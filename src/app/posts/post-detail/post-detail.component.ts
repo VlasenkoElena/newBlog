@@ -28,6 +28,8 @@ export class PostDetailComponent implements OnInit {
       body: ['', Validators.required]
     });
     this.newPost = this.route.snapshot.data['isNewPost'];
+    console.log(this.newPost);
+
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
     this.getId();
@@ -77,6 +79,13 @@ export class PostDetailComponent implements OnInit {
         this.post = post;
         this.router.navigate(['posts/my-post']);
   });
+  }
+ }
+
+ delPost() {
+  if (this.id) {
+    this.postsService.delPostbyId(this.id);
+      this.router.navigate(['posts/my-post']);
   }
  }
 }
