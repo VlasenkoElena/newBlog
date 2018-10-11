@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { PostsService } from '../../shared/services/posts.servece';
+import { TokenService } from '../../shared/services/token.service';
 
 
 @Component({
@@ -15,10 +16,12 @@ import { PostsService } from '../../shared/services/posts.servece';
 })
 export class PostOverviewComponent implements OnInit {
   post: Observable<Post>;
-
+  show = false;
+  editPost;
   constructor(
     private postsService: PostsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {
@@ -27,5 +30,8 @@ export class PostOverviewComponent implements OnInit {
         return  this.postsService.getPostById(params['id']);
       })
     );
+    if (this.tokenService.isLogIn()) {
+      this.show = true;
+    }
   }
 }

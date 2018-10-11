@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 import { Jsona } from 'jsona/lib';
 import { Observable } from 'rxjs';
-import {  map, switchMapTo } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { Post } from '../models/post.model';

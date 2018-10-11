@@ -2,15 +2,17 @@
   <mat-card class="example-card">
     <mat-card-header>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="card-content">
       <img mat-card-image src="{{(post | async)?.image}}">
+      <div>
       <p>
         {{(post | async)?.body}}
       </p>
+      </div>
     </mat-card-content>
     <mat-card-actions class="footer">
       <button mat-button color="primary" [routerLink]="['/posts/all']">Back</button>
-      <button mat-button color="primary" [routerLink]="['/posts/detail', (post | async)?.id]">Edit</button>
+      <button mat-button *ngIf="show" color="primary" [routerLink]="['/posts/detail', (post | async)?.id]">Edit</button>
     </mat-card-actions>
   </mat-card>
 </div>

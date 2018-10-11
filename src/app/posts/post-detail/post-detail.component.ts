@@ -4,7 +4,7 @@ import {  ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Post } from '../../shared/models/post.model';
 import { PostsService } from '../../shared/services/posts.servece';
-import { switchMap } from 'rxjs/operators';
+import { concatMap,  switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-detail',
@@ -48,11 +48,13 @@ export class PostDetailComponent implements OnInit {
   loadImg(event) {
     this.file = event.target.files[0];
     console.log(this.file);
+    if (this.id !== null) {
     this.postsService.addImg(this.id, this.file)
     .subscribe(
       data => {
       this.post = data;
     });
+  }
   }
   savePost() {
     const body = this.createPost.value;
@@ -65,10 +67,16 @@ export class PostDetailComponent implements OnInit {
       });
     } else {
       this.postsService.createNewPost(body)
-    .subscribe(post => {
-      this.router.navigate(['posts/my-post']);
-    });
+      .pipe(
+        tap(res => console.log(res)),
+        concatMap((data) => {
+          this.id = data.id;
+          console.log(this.id, this.file);
+          return this.postsService.addImg(this.id, this.file);
+        })).subscribe(post => {
+        this.post = post;
+        this.router.navigate(['posts/my-post']);
+  });
   }
  }
-
 }
