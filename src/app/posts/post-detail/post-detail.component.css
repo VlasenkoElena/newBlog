@@ -15,7 +15,7 @@
 textarea {
   resize: vertical;
   height: 100px;
-  overflow:hidden;
+  overflow: auto;
 }
 .footer {
   margin: 10px auto;
@@ -36,14 +36,21 @@ textarea {
   z-index: 1;
 }
 .file-upload {
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    padding: 6px 12px;
     cursor: pointer;
+   text-align: center;
 }
-input[type=file] {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-  font-style: italic;
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
 }

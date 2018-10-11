@@ -23,9 +23,10 @@ export class PostsService {
   getMyPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/api/my_posts`);
   }
-  delPost(id: string) {
-      return this.http.delete(`${environment.apiUrl}/api/posts/${id}`);
+  delPostbyId(id: string): Observable<any> {
+      return this.http.delete<any>(`${environment.apiUrl}/api/posts/${id}`);
   }
+
   createNewPost(body): Observable<Post> {
     const newPost = this.jsona.serialize({
         stuff: { ...body, type: 'post' }
@@ -45,5 +46,9 @@ export class PostsService {
      const postImg = new FormData();
      postImg.append('image', img);
      return this.http.put<any>(`${environment.apiUrl}/api/posts/${id}/image`, postImg);
+  }
+
+  delImg(id: string): Observable<Post> {
+    return this.http.delete<Post>(`${environment.apiUrl}/api/posts/${id}/image`);
   }
 }
