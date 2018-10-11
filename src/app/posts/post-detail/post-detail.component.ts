@@ -86,14 +86,14 @@ export class PostDetailComponent implements OnInit {
     }
   }
 
-  delPost() {
+  deletePost() {
     if (this.id) {
       this.postsService.delPostbyId(this.id).subscribe();
       this.router.navigate(['posts/my-post']);
     }
   }
 
-  delImg() {
+  deleteImg() {
     this.postsService.delImg(this.id).subscribe(data => {
       this.post = data;
       console.log(this.post);
