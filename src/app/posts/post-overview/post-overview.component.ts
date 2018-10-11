@@ -26,6 +26,7 @@ export class PostOverviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getMyPost();
     this.post = this.route.params.pipe(
       switchMap((params: Params) => {
         return  this.postsService.getPostById(params['id']);
@@ -37,8 +38,8 @@ export class PostOverviewComponent implements OnInit {
   }
   getMyPost() {
     this.postsService.getMyPosts().subscribe(data => {
-      this.id = data[1];
-      console.log(this.id);
+      this.id = data[0].id;
+      console.log(data);
     });
   }
 }
