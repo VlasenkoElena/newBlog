@@ -6,9 +6,13 @@
     <mat-card class="container">
       <mat-card-content>
         <mat-form-field class="form-field">
-          <textarea rows="10" formControlName="body" matInput placeholder="Enter your post">
-        {{(post | async)?.body}}</textarea>
+          <textarea formControlName="body" matInput placeholder="Enter your post">
+        {{post?.body}}</textarea>
         </mat-form-field>
+        <img mat-card-image src="{{post?.image}}">
+        <div class="file-upload">
+        <input type="file" (change)="loadImg($event)" multiple>
+        </div>
       </mat-card-content>
       <mat-card-actions class="footer">
         <button mat-button color="primary">Save</button>

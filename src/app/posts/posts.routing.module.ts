@@ -14,12 +14,18 @@ const routes: Routes = [
   {
     path: 'my-post',
     component: PostIndexComponent,
-    canActivate: [ProfileGuard]
+    canActivate: [ProfileGuard],
+    data: {
+      isMyPost: true
+    }
   },
   {
     path: 'detail',
     component: PostDetailComponent,
-    canActivate: [ProfileGuard]
+    canActivate: [ProfileGuard],
+    data: {
+      isNewPost: true
+    }
   },
 
   {

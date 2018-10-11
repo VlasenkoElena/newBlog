@@ -12,6 +12,11 @@
 .form-field {
   width: 100%;
 }
+textarea {
+  resize: vertical;
+  height: 100px;
+  overflow:hidden;
+}
 .footer {
   margin: 10px auto;
 }
@@ -29,4 +34,16 @@
   font-family: Arial, sans-serif;
   font-size: 12px; 
   z-index: 1;
+}
+.file-upload {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+input[type=file] {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-style: italic;
 }
