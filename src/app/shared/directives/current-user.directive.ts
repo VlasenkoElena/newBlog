@@ -1,25 +1,35 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { TokenService } from '../services/token.service';
-import { ActivatedRoute } from '@angular/router';
+
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
+
 @Directive({ selector: '[appCurrentUser]'})
-export class CurrentUserDirective implements OnInit {
+export class CurrentUserDirective implements OnInit  {
+@Input() appCurrentUser: number;
 currentUser: User;
-    constructor(private route: ActivatedRoute, private tokenService: TokenService) {}
+
+    constructor(
+        private tokenService: TokenService,
+        private viewContainer: ViewContainerRef,
+        private templateRef: TemplateRef<any>) {}
 
 
-    ngOnInit() {
-        this.tokenService.mySubject.subscribe(data => {
-            this.currentUser = data;
-            console.log(this.currentUser);
-          });
+     ngOnInit() {
+        this.tokenService.mySubject
+        .subscribe(data => {
+            console.log(data.id === this.appCurrentUser);
+            if (data.id === this.appCurrentUser) {
+                this.viewContainer.createEmbeddedView(this.templateRef);
+            } else {
+                this.viewContainer.clear();
+            }
+            console.log(this.appCurrentUser);
+            console.log(data.id);
+        });
     }
-    /*@Input('appCurrentUser') set appCurrentUser(condition) {
-        if (condition) {
-            this.currentUser = this.route.snapshot.data['isMyPost'];
-            console.log(this.currentUser);
-        }
-    }*/
+
+
 }
+

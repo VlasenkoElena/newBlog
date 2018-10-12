@@ -10,6 +10,7 @@ import { PostOverviewComponent } from './post-overview/post-overview.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostsRoutingModule } from './posts.routing.module';
 import { PostComponent } from './post-index/post/post.component';
+import { CurrentUserDirective } from '../shared/directives/current-user.directive';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PostComponent } from './post-index/post/post.component';
     PostIndexComponent,
     PostOverviewComponent,
     PostDetailComponent,
-    PostComponent
+    PostComponent,
+    CurrentUserDirective
   ]
 })
 export class PostsModule { }

@@ -24,7 +24,7 @@ import { CurrentUserDirective } from './shared/directives/current-user.directive
     AppComponent,
     HeaderComponent,
     SidenaveComponent,
-    CurrentUserDirective
+    // CurrentUserDirective
   ],
   imports: [
     BrowserModule,

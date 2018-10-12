@@ -46,7 +46,6 @@ export class AuthService {
         }),
         switchMapTo(this.getProfile()),
         catchError(err => {
-          console.log(err);
           return throwError('Something bad happened; please try again later.');
         })
       );
@@ -71,9 +70,5 @@ export class AuthService {
       `${environment.apiUrl}/api/profile/avatar`,
       newImg
     );
-  }
-
-  handleError(error: HttpErrorResponse) {
-    return throwError('Something bad happened; please try again later.');
   }
 }
