@@ -30,6 +30,7 @@ export class PostIndexComponent implements OnInit {
   getPost() {
       this.postsService.getPosts().subscribe(data => {
         this.posts = data;
+        console.log(this.posts);
       });
   }
   getMyPost() {

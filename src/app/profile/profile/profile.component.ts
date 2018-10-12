@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.tokenService.mySubject.subscribe(data => {
       this.user = data;
+      console.log(this.user);
     });
   }
   editAvatar() {

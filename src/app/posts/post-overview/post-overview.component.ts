@@ -6,8 +6,6 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { PostsService } from '../../shared/services/posts.servece';
-import { TokenService } from '../../shared/services/token.service';
-
 
 @Component({
   selector: 'app-post-overview',
@@ -16,22 +14,17 @@ import { TokenService } from '../../shared/services/token.service';
 })
 export class PostOverviewComponent implements OnInit {
   post: Observable<Post>;
-  show = false;
-  editPost;
+
   constructor(
     private postsService: PostsService,
-    private route: ActivatedRoute,
-    private tokenService: TokenService
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.post = this.route.params.pipe(
       switchMap((params: Params) => {
-        return  this.postsService.getPostById(params['id']);
+        return this.postsService.getPostById(params['id']);
       })
     );
-    if (this.tokenService.isLogIn()) {
-      this.show = true;
-    }
   }
 }

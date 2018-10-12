@@ -17,12 +17,14 @@ import { JsonApiInterseptor } from './shared/interseptors/jsonapi.interseptors';
 import { TokenInterseptor } from './shared/interseptors/token-interseptor';
 import { TokenService } from './shared/services/token.service';
 import { ProfileGuard } from './shared/guards/profile.guard';
+import { CurrentUserDirective } from './shared/directives/current-user.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidenaveComponent
+    SidenaveComponent,
+    // CurrentUserDirective
   ],
   imports: [
     BrowserModule,
