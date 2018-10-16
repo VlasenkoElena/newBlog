@@ -38,18 +38,14 @@ textarea {
   top: 35px;
   z-index: 1;
 }
-.close:hover::after {
-  content: attr(data-title);
-  position: absolute; 
-  top: 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 12px; 
-  z-index: 1;
-}
+
 .file-upload {
-    cursor: pointer;
-   text-align: center;
+  cursor: pointer;
+  text-align: center;
+  color: #5f6368;
+}
+.file-upload:hover {
+  color: black;
 }
 .inputfile {
 	width: 0.1px;

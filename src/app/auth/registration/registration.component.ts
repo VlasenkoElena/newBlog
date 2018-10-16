@@ -25,7 +25,7 @@ export class RegistrationComponent implements OnInit {
   signIn() {
     this.registrationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(9)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       name: ['', [Validators.required]]
     });
     console.log(this.registrationForm);

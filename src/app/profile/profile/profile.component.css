@@ -1,33 +1,33 @@
 .card {
-  width: 300px;
+  width: 350px;
   min-width: 300px;
   margin: 30px auto;
   border-radius: 10px;
 }
-.title {
-  width: 300px;
-  display: flex;
-  justify-content: space-around;
-}
-h3 {
-  width: 50%;
-  font-size: 14px;
+.title-content {
+  margin: 40px;
 }
 .title {
-  margin-top: 5px;
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .content {
   display: flex;
 }
 .input {
-  margin-top: 10px;
+  width: 50px;
+  height: 40px;
+  margin-top: 20px;
 }
+
 .btn {
   text-align: center;
+  margin: 10px 0;
 }
-p {
-  margin-left: 20px;
+.text {
+  font-size: 14px;
+  line-height: 14px;
+  color: #5f6368;
 }
 .wrapper-img {
   width: 140px;
@@ -51,4 +51,21 @@ a:hover {
 }
 .a-link {
     font-size: 16px;
+}
+.file-upload {
+  width: 100px;
+  cursor: pointer;
+  text-align: center;
+  color: #5f6368;
+}
+.file-upload:hover {
+  color: black;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }

@@ -1,23 +1,25 @@
 <mat-card class="card">
-  <mat-card-header class="head">
-    <mat-card-title class="title">
-      <h3>your profile</h3>
-      <span class="title">{{user?.name}}</span>
-    </mat-card-title>
-  </mat-card-header>
+  
   <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
   <mat-card-content class="content">
-      <div class="wrapper-img">
-      <img  class="img" src="{{user?.avatar}}">
-      </div>
-      <div *ngIf="show" class="input">
-        <input type="file" (change)="loadImg($event)" multiple>
-      </div>
-    <p>E-mail: {{user?.email}}</p>
+    <div>
+    <div class="wrapper-img">
+      <img class="img" src="{{user?.avatar}}">
+    </div>
+    <div *ngIf="show" class="input">
+      <div class="file-upload">
+        <label for="file">Choose a file</label> 
+      <input type="file" name="file" (change)="loadImg($event)" multiple class="inputfile" id="file">
+    </div>
+    </div>
+    </div>
+    <div class="title-content">
+    <span class="title">{{user?.name}}</span>
+    <div class="text"> {{user?.email}}</div>
+    </div>
   </mat-card-content>
   <mat-card-actions class="btn">
     <a class="a-link" [routerLink]="['/posts/all']">Go to posts</a>
-    <a  (click)="editAvatar()">Edit</a>
+    <a (click)="editAvatar()">Edit</a>
   </mat-card-actions>
 </mat-card>
-
