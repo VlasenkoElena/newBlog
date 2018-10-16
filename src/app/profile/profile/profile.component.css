@@ -1,40 +1,71 @@
 .card {
-    width: 300px;
-    min-width: 300px;
-    margin: 30px auto;
-    border-radius: 10px;
+  width: 350px;
+  min-width: 300px;
+  margin: 30px auto;
+  border-radius: 10px;
 }
-.head {
-    margin: 10px auto;
-    text-align: center;
-    width: 50%;
+.title-content {
+  margin: 40px;
 }
 .title {
-    margin: 10px;
-    font-size: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .content {
-    width: 50%;
-    align-items: center;
-    margin: auto;
+  display: flex;
 }
 .input {
-margin-top: 10px;
+  width: 50px;
+  height: 40px;
+  margin-top: 20px;
 }
+
 .btn {
-    text-align: center;
+  text-align: center;
+  margin: 10px 0;
+}
+.text {
+  font-size: 14px;
+  line-height: 14px;
+  color: #5f6368;
 }
 .wrapper-img {
-  width: 130px;
-  height: 130px;
-  margin-left: 10px;
+  width: 140px;
+  height: 140px;
   overflow: hidden;
   border-radius: 50%;
- display: flex;
- justify-content: center;
 }
 .img {
-    width: auto;
-    height: 100%;
-    margin: auto;
+  width: auto;
+  height: 100%;
+  margin: auto;
+}
+a {
+  font-size: 14px;
+  color: #5f6368;
+  cursor: pointer;
+  margin-right: 20px;
+}
+a:hover {
+  color: #4285f4;
+}
+.a-link {
+    font-size: 16px;
+}
+.file-upload {
+  width: 100px;
+  cursor: pointer;
+  text-align: center;
+  color: #5f6368;
+}
+.file-upload:hover {
+  color: black;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }

@@ -12,6 +12,16 @@
 .form-field {
   width: 100%;
 }
+a {
+  padding: 10px;
+  color: #5f6368;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+a:hover {
+  color: #4285f4;
+}
 textarea {
   resize: vertical;
   height: 100px;
@@ -19,6 +29,8 @@ textarea {
 }
 .footer {
   margin: 10px auto;
+  display: flex;
+  justify-content: space-around;
 }
 .close {
   position: relative;
@@ -26,18 +38,14 @@ textarea {
   top: 35px;
   z-index: 1;
 }
-.close:hover::after {
-  content: attr(data-title);
-  position: absolute; 
-  top: 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 12px; 
-  z-index: 1;
-}
+
 .file-upload {
-    cursor: pointer;
-   text-align: center;
+  cursor: pointer;
+  text-align: center;
+  color: #5f6368;
+}
+.file-upload:hover {
+  color: black;
 }
 .inputfile {
 	width: 0.1px;
