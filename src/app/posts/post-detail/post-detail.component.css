@@ -12,6 +12,16 @@
 .form-field {
   width: 100%;
 }
+a {
+  padding: 10px;
+  color: #5f6368;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+a:hover {
+  color: #4285f4;
+}
 textarea {
   resize: vertical;
   height: 100px;
@@ -19,6 +29,8 @@ textarea {
 }
 .footer {
   margin: 10px auto;
+  display: flex;
+  justify-content: space-around;
 }
 .close {
   position: relative;

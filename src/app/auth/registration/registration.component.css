@@ -11,7 +11,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .footer {
   margin: 20px;
   display: flex;
@@ -22,9 +21,15 @@
 }
 .name {
   text-align: center;
-  font: 500 18px 'Cinzel', serif;
-  color: #4747d1;
+  font: 500 20px 'Cinzel', serif;
+  color: #4285f4;
 }
 p {
   text-align: center;
+}
+.btn {
+  margin-right: 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: #4285f4;
 }

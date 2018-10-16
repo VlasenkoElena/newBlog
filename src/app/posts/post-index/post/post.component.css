@@ -26,3 +26,11 @@ img {
   font: 16px/20px "Roboto", sans-serif;
   letter-spacing: 0.5px;
 }
+a {
+  font-size: 12px;
+  color: #5f6368;
+  cursor: pointer;
+}
+a:hover {
+  color: #4285f4;
+}

@@ -4,16 +4,11 @@
    left: 0;
    right: 0;
    z-index: 2;
-   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.12), 0 1px 18px 0 rgba(0,0,0,.12);
 }
-.toolbar {
-  background-color: #4747d1;
-}
-p {
-  color: white;
-}
+
 h3 {
-  color: white;
+  color: #5f6368;
   font: 300 18px 'Cinzel', serif;
 }
 .logo {
@@ -23,26 +18,29 @@ h3 {
   outline: none;
 }
 .icon {
-  color: white;
+  color: #5f6368;
   margin: 15px 20px;
+}
+.icon:hover {
+  color: #4285f4;
 }
 .fill-remaining-space {
   flex: 1 1 auto;
-  color: white;
-  font: 300 30px 'Cinzel', serif;
+  color: #5f6368;
+  font: 600 30px 'Cinzel', serif;
 }
 .auth-link {
   cursor: pointer;
-  background:  #4747d1;
+  padding: 5px 7px;
   margin-right: 20px;
-  color:  white;
-  border-radius: 10px;
+  color:  #5f6368;
+  border-radius: 50px;
   font-size: 16px;
 }
 .active {
-  background: white;
-  border: 1px solid #4747d1;
-  color: #4747d1;
+  background: #4285f4;
+  border: 1px solid #4285f4;
+  color: white;
 }
 
 

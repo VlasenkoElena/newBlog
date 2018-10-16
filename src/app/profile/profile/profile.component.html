@@ -1,8 +1,8 @@
 <mat-card class="card">
   <mat-card-header class="head">
-    <mat-card-title>
-      <h3>Your Profile</h3>
-      <mat-card-title class="title">{{user?.name}}</mat-card-title>
+    <mat-card-title class="title">
+      <h3>your profile</h3>
+      <span class="title">{{user?.name}}</span>
     </mat-card-title>
   </mat-card-header>
   <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
@@ -16,8 +16,8 @@
     <p>E-mail: {{user?.email}}</p>
   </mat-card-content>
   <mat-card-actions class="btn">
-    <button mat-button color="primary" [routerLink]="['/posts/all']">Go to posts</button>
-    <button mat-button color="primary" (click)="editAvatar()">Edit</button>
+    <a class="a-link" [routerLink]="['/posts/all']">Go to posts</a>
+    <a  (click)="editAvatar()">Edit</a>
   </mat-card-actions>
 </mat-card>
 

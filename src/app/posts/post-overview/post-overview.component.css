@@ -6,10 +6,6 @@
 .card {
     max-height: 60%;
 }
-.footer {
-    margin: auto;
-    text-align: center;
-}
 .text {
   font: 16px/20px 'Roboto', sans-serif;
   letter-spacing: .1px;
@@ -22,4 +18,13 @@ img {
     max-height: 550px;
     overflow: hidden;
     border-radius: 3px;
+  }
+  a {
+    font-size: 14px;
+    margin: 20px;
+    color: #5f6368;
+    cursor: pointer;
+  }
+  a:hover {
+    color: #4285f4;
   }
