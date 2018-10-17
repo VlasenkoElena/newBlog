@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public tokenService: TokenService, private router: Router) { }
+  constructor(
+    public tokenService: TokenService,
+    private router: Router) { }
 
   ngOnInit() {
   }

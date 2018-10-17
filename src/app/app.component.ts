@@ -11,7 +11,9 @@ import { TokenService } from './shared/services/token.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, private tokenService: TokenService) {}
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService) {}
   ngOnInit() {
     if (this.tokenService.isLogIn()) {
     this.authService.getProfile().subscribe();
