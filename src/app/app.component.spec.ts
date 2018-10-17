@@ -24,22 +24,34 @@ class TokenServiseStub implements TokenService {
 }
 
 describe('AppComponent', () => {
+  let fixture;
+  let component;
+  let app;
+
   beforeEach(async(() => {
     const authService = jasmine.createSpyObj('AuthService', ['getProfile']);
-    let getProfileSpy = authService.getProfile.and.returnValue('user data');
+    /*let getProfileSpy = authService.getProfile.and.returnValue('user data');*/
+
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
       providers: [
         {provide: TokenService, useClass: TokenServiseStub},
-        {provide: AuthService, useValue: authService}],
+        {provide: AuthService, useValue: authService}
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 });
