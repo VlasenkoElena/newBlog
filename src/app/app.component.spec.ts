@@ -1,6 +1,6 @@
 import {  async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TokenService } from './shared/services/token.service';
 import { AuthService } from './shared/services/auth.service';
@@ -30,7 +30,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     const authService = jasmine.createSpyObj('AuthService', ['getProfile']);
-    /*let getProfileSpy = authService.getProfile.and.returnValue('user data');*/
+    const getProfileSpy = authService.getProfile.and.returnValue(of({}));
 
     TestBed.configureTestingModule({
       declarations: [
