@@ -1,35 +1,21 @@
 import {  async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { BehaviorSubject, of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { TokenService } from './shared/services/token.service';
 import { AuthService } from './shared/services/auth.service';
+import { TokenServiseStub } from './shared/services/service-stub/token-stub.servise';
+import { of } from 'rxjs';
 
-class TokenServiseStub implements TokenService {
-  public mySubject: BehaviorSubject<any>;
-  constructor() {
-      this.mySubject = new BehaviorSubject({});
-  }
-  public setToken(token) {}
-
-  public getToken() {
-      return 'token';
-  }
-  public isLogIn() {
-      return true;
-  }
-  public delToken() {
-      return;
-  }
-}
 
 describe('AppComponent', () => {
   let fixture;
   let component;
   let app;
+  let authService;
 
   beforeEach(async(() => {
-    const authService = jasmine.createSpyObj('AuthService', ['getProfile']);
+    authService = jasmine.createSpyObj('AuthService', ['getProfile']);
     const getProfileSpy = authService.getProfile.and.returnValue(of({}));
 
     TestBed.configureTestingModule({
@@ -54,5 +40,10 @@ describe('AppComponent', () => {
   it('should create the app', async(() => {
     expect(app).toBeTruthy();
   }));
+
+  it('should getProfile', async() => {
+    await fixture.whenStable();
+    expect(authService.getProfile).toHaveBeenCalled();
+  });
 });
 
