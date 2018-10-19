@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../../shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
+import { MOCK_ROUTES } from '../../tes-helpers/router.mock';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -16,7 +17,7 @@ describe('LoginComponent', () => {
     authService = jasmine.createSpyObj('AuthService', ['logInUser']);
     const logInSpy = authService.logInUser.and.returnValue(of({}));
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, ReactiveFormsModule],
+      imports: [RouterTestingModule.withRoutes(MOCK_ROUTES), ReactiveFormsModule],
       declarations: [LoginComponent],
       providers: [
         { provide: AuthService, useValue: authService }

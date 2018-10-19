@@ -6,12 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
-import { By } from '@angular/platform-browser';
-
-
-class MockComponent {
-
-}
+import { MOCK_ROUTES } from '../../tes-helpers/router.mock';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -22,19 +17,15 @@ describe('RegistrationComponent', () => {
 
     authService = jasmine.createSpyObj('AuthService', ['createNewUser']);
     const createUserSpy = authService.createNewUser.and.returnValue(of({}));
+
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes([
-        {
-          path: ' ',
-          component: MockComponent
-        }
-      ]),
+        RouterTestingModule.withRoutes(MOCK_ROUTES),
         ReactiveFormsModule,
         FormsModule
       ],
       declarations: [
-        RegistrationComponent,
+        RegistrationComponent
       ],
       providers: [
         {provide: AuthService, useValue: authService}],
@@ -53,20 +44,20 @@ describe('RegistrationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should call registrationFormInfo metod', async() => {
-  //   spyOn(component, 'registrationFormInfo');
-  //   component.registrationForm.patchValue({
-  //     email: '1@email.com',
-  //     password: '12345678',
-  //     name: 'Name'
-  //   });
-  //   fixture.detectChanges();
-  //   await fixture.whenStable();
-  //   const el = document.querySelector('button[type=submit]') as HTMLElement;
-  //   el.click();
-  //   fixture.detectChanges();
-  //   await fixture.whenStable();
-  //   expect(component.registrationFormInfo).toHaveBeenCalled();
-  //   // expect(router.navigate).toHaveBeenCalledWith(['posts/my-post']);
-  // });
+   it('should call registrationFormInfo metod', async() => {
+    spyOn(component, 'registrationFormInfo');
+    component.registrationForm.patchValue({
+      email: '1@email.com',
+      password: '12345678',
+      name: 'Name'
+     });
+    fixture.detectChanges();
+    await fixture.whenStable();
+    const el = document.querySelector('button[type=submit]') as HTMLElement;
+     el.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+     expect(component.registrationFormInfo).toHaveBeenCalled();
+    // expect(router.navigate).toHaveBeenCalledWith(['posts/my-post']);
+ });
 });

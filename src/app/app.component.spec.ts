@@ -6,6 +6,7 @@ import { TokenService } from './shared/services/token.service';
 import { AuthService } from './shared/services/auth.service';
 import { TokenServiseStub } from './shared/services/service-stub/token-stub.servise';
 import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('AppComponent', () => {
@@ -19,6 +20,9 @@ describe('AppComponent', () => {
     const getProfileSpy = authService.getProfile.and.returnValue(of({}));
 
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [
         AppComponent
       ],

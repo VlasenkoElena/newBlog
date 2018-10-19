@@ -1,4 +1,4 @@
-/*import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -14,19 +14,17 @@ describe('ProfileComponent', () => {
   let authService;
 
   beforeEach(async(() => {
-    authService = jasmine.createSpyObj('AuthService', ['getProfile', 'editAvatar']);
+    authService = jasmine.createSpyObj('AuthService', ['getProfile']);
     const getProfileSpy = authService.getProfile.and.returnValue(of({}));
-    const loadImgSpy = authService.editAvatar().and.returnValue(of({}));
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ ProfileComponent ],
+      declarations: [ProfileComponent],
       providers: [
-        {provide: TokenService, useClass: TokenServiseStub},
-        {provide: AuthService, useValue: authService}
+        { provide: TokenService, useClass: TokenServiseStub },
+        { provide: AuthService, useValue: authService }
       ],
       schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -39,8 +37,18 @@ describe('ProfileComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should loadImg', async() => {
+  it('should call editAvatar metod', async () => {
+    fixture.detectChanges();
+    spyOn(component, 'editAvatar');
     await fixture.whenStable();
-    expect(component.loadImg).toHaveBeenCalledWith(File);
+    component.editAvatar();
+    expect(component.editAvatar).toHaveBeenCalled();
   });
-});*/
+
+  it('should loadImg', async () => {
+    spyOn(component, 'loadImg');
+    await fixture.whenStable();
+    component.loadImg(event);
+    expect(component.loadImg).toHaveBeenCalled();
+  });
+});

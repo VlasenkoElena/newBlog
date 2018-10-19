@@ -31,14 +31,14 @@ export class PostIndexComponent implements OnInit {
   getPost() {
       this.postsService.getPosts().subscribe(data => {
         this.posts = data;
-        console.log(this.posts);
+        /*console.log(this.posts);*/
       });
   }
   getMyPost() {
     if (this.tokenService.getToken()) {
       this.postsService.getMyPosts().subscribe(data => {
         this.posts = data;
-        console.log(this.posts);
+        /*console.log(this.posts);*/
       });
     }
   }
