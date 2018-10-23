@@ -31,15 +31,14 @@ export class PostsService {
     const newPost = this.jsona.serialize({
         stuff: { ...body, type: 'post' }
       });
-      console.log(newPost);
       return this.http.post<Post>(`${environment.apiUrl}/api/posts`, newPost);
   }
 
-  editPost(id: string, body): Observable<any> {
+  editPost(id: string, body): Observable<Post> {
     const editPost = this.jsona.serialize({
       stuff: { ...body, type: 'post' }
     });
-    return  this.http.put<any>(`${environment.apiUrl}/api/posts/${id}`, editPost);
+    return  this.http.put<Post>(`${environment.apiUrl}/api/posts/${id}`, editPost);
   }
 
    addImg(id: string, img: File): Observable<any> {

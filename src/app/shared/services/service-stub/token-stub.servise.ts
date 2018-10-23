@@ -2,9 +2,9 @@ import { BehaviorSubject } from 'rxjs';
 import { TokenService } from '../token.service';
 
 export class TokenServiseStub implements TokenService {
-    public mySubject: BehaviorSubject<any>;
+    public profileSubject: BehaviorSubject<any>;
     constructor() {
-        this.mySubject = new BehaviorSubject({});
+        this.profileSubject = new BehaviorSubject({});
     }
     public setToken(token) {}
     public getToken() {

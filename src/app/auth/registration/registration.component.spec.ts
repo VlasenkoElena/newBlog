@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
-import { MOCK_ROUTES } from '../../tes-helpers/router.mock';
+import { MOCK_ROUTES } from '../../test-helpers/router.mock';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;

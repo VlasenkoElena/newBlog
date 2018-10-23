@@ -1,7 +1,6 @@
 import { Directive, Input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { TokenService } from '../services/token.service';
 
-import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 
@@ -17,7 +16,7 @@ currentUser: User;
 
 
      ngOnInit() {
-        this.tokenService.mySubject
+        this.tokenService.profileSubject
         .subscribe(data => {
             console.log(data.id === this.appCurrentUser);
             if (data.id === this.appCurrentUser) {

@@ -42,7 +42,6 @@ describe('AllPostsComponent', () => {
 
   it('should call getPost metod', async() => {
     spyOn(component, 'getMyPost');
-    console.log(component.myPost);
     component.myPost = false;
     fixture.detectChanges();
     await fixture.whenStable();

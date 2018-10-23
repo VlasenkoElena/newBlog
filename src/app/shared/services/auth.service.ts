@@ -55,7 +55,7 @@ export class AuthService {
     return this.http.get<any>(`${environment.apiUrl}/api/profile`).pipe(
       map(data => {
         if (this.tokenService.getToken()) {
-          this.tokenService.mySubject.next(data);
+          this.tokenService.profileSubject.next(data);
         }
         return data;
       })

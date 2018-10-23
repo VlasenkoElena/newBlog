@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../../shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
-import { MOCK_ROUTES } from '../../tes-helpers/router.mock';
+import { MOCK_ROUTES } from '../../test-helpers/router.mock';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

@@ -4,9 +4,9 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class TokenService {
 
-    public mySubject: BehaviorSubject<any>;
+    public profileSubject: BehaviorSubject<any>;
     constructor() {
-        this.mySubject = new BehaviorSubject({});
+        this.profileSubject = new BehaviorSubject({});
     }
     public setToken(token) {
         return localStorage.setItem('auth_token', token);
@@ -18,7 +18,7 @@ export class TokenService {
         return this.getToken() !== null;
     }
     public delToken() {
-        this.mySubject.next('');
+        this.profileSubject.next('');
         return localStorage.removeItem('auth_token');
     }
 }

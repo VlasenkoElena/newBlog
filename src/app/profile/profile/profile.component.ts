@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.tokenService.mySubject.subscribe(data => {
+    this.tokenService.profileSubject.subscribe(data => {
       this.user = data;
       console.log(this.user);
     });
