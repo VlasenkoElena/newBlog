@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule, MatToolbarModule,  MatSidenavModule,
   MatCardModule, MatFormFieldModule, MatSelectModule,
   MatButtonModule,
-  MatInputModule} from '@angular/material';
+  MatInputModule, MatListModule} from '@angular/material';
 
 
 const MATERIAL_COMPONENTS = [
@@ -14,7 +14,8 @@ const MATERIAL_COMPONENTS = [
   MatFormFieldModule,
   MatSelectModule,
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatListModule
 ];
 @NgModule({
   imports: [

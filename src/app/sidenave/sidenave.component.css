@@ -1,36 +1,41 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 150px;
+  padding-top: 60px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  width: 250px;
   text-align: center;
-  padding-top: 30px;
-}
-a {
-  padding: 10px;
-  margin-top: 5px;
   color: #5f6368;
-  font-size: 16px;
+}
+.group {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 8px;
+  outline: none;
   cursor: pointer;
 }
-.active {
-  height: 20px;
-  border-radius: 0 50px 50px 0;
-  background: rgba(66,133,244,0.149);
-  color: #1a73e8;
+.mat-icon {
+ color: #5f6368;
+ margin: 5px 7px; 
+}
+a {
+  color: #5f6368;
 }
 a:hover {
   color: #4285f4;
 }
+.active {
+  background: #e8f0fe;
+  color: #3367d6;
+}
+.active a,
+.active .mat-icon {
+  color: #3367d6;
+}
 .container {
-  margin: 60px 0 60px;
   height: 100vh;
 }
-
 .icon {
-  position: fixed;
+position: absolute;
   top: 10px;
   left: 30px;
   color: #5f6368;
   z-index: 3;
 }
-
