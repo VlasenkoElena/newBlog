@@ -1,27 +1,53 @@
-import { TestBed, async } from '@angular/core/testing';
+import {  async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+import { TokenService } from './shared/services/token.service';
+import { AuthService } from './shared/services/auth.service';
+import { TokenServiseStub } from './shared/services/service-stub/token-stub.servise';
+import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+
+
 describe('AppComponent', () => {
+  let fixture;
+  let component;
+  let app;
+  let authService;
+
   beforeEach(async(() => {
+    authService = jasmine.createSpyObj('AuthService', ['getProfile']);
+    const getProfileSpy = authService.getProfile.and.returnValue(of({}));
+
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        {provide: TokenService, useClass: TokenServiseStub},
+        {provide: AuthService, useValue: authService}
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
   }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'newBlog'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('newBlog');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to newBlog!');
-  }));
+
+  it('should getProfile', async() => {
+    await fixture.whenStable();
+    expect(authService.getProfile).toHaveBeenCalled();
+  });
 });
+

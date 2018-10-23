@@ -30,7 +30,6 @@ export class PostDetailComponent implements OnInit {
       body: ['', Validators.required]
     });
     this.newPost = this.route.snapshot.data['isNewPost'];
-    console.log(this.newPost);
 
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
@@ -53,7 +52,6 @@ export class PostDetailComponent implements OnInit {
 
   loadImg(event) {
     this.file = event.target.files[0];
-    console.log(this.file);
     if (this.id !== null) {
       this.postsService.addImg(this.id, this.file).subscribe(data => {
         this.post = data;
@@ -66,7 +64,6 @@ export class PostDetailComponent implements OnInit {
       console.log(this.id);
       this.postsService.editPost(this.id, body).subscribe(post => {
         this.router.navigate(['posts/my-post']);
-        console.log(post);
       });
     } else {
       this.postsService
@@ -75,7 +72,6 @@ export class PostDetailComponent implements OnInit {
           tap(res => console.log(res)),
           concatMap(data => {
             this.id = data.id;
-            console.log(this.id, this.file);
             return this.postsService.addImg(this.id, this.file);
           })
         )
@@ -96,7 +92,6 @@ export class PostDetailComponent implements OnInit {
   deleteImg() {
     this.postsService.delImg(this.id).subscribe(data => {
       this.post = data;
-      console.log(this.post);
     });
   }
 }

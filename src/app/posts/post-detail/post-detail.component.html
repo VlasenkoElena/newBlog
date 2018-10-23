@@ -14,9 +14,9 @@
         </div>
       </mat-card-content>
       <mat-card-actions class="footer">
-        <a  [routerLink]="['/posts/my-post']" (click)="savePost()">Save</a>
+        <a  [routerLink]="['/posts/my-post']" (click)="savePost()" class="save">Save</a>
         <a  type="button" color="primary" [routerLink]="['/posts/all']">All posts</a>
-        <a  type="button" color="primary" *ngIf="!newPost" [routerLink]="['/posts/all']" (click)="deletePost()">Delete</a>
+        <a  type="button" color="primary" *ngIf="!newPost" [routerLink]="['/posts/all']" (click)="deletePost()" class="del">Delete</a>
       </mat-card-actions>
     </mat-card>
   </form>

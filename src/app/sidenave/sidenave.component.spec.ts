@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidenaveComponent } from './sidenave.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SidenaveComponent', () => {
   let component: SidenaveComponent;
@@ -8,7 +10,9 @@ describe('SidenaveComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidenaveComponent ]
+      imports: [RouterTestingModule],
+      declarations: [ SidenaveComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

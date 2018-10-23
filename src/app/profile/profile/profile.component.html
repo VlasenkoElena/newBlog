@@ -1,5 +1,4 @@
 <mat-card class="card">
-  
   <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
   <mat-card-content class="content">
     <div>
@@ -20,6 +19,6 @@
   </mat-card-content>
   <mat-card-actions class="btn">
     <a class="a-link" [routerLink]="['/posts/all']">Go to posts</a>
-    <a (click)="editAvatar()">Edit</a>
+    <a class="btn" (click)="editAvatar()">Edit</a>
   </mat-card-actions>
 </mat-card>

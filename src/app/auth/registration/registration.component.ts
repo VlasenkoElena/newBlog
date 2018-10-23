@@ -28,13 +28,10 @@ export class RegistrationComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       name: ['', [Validators.required]]
     });
-    console.log(this.registrationForm);
   }
 
   registrationFormInfo() {
     const registrationInfo = this.registrationForm.value;
-    console.log(registrationInfo);
-
     if (registrationInfo) {
       this.authService.createNewUser(registrationInfo).subscribe(
         user => {
@@ -50,14 +47,16 @@ export class RegistrationComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return this.registrationForm.get('email').hasError('required') ? 'You must enter a value'
-    : this.registrationForm.get('email').hasError('email')
-        ? 'Not a valid email' : ''
-      ;
+    return this.registrationForm.get('email').hasError('required')
+      ? 'You must enter a value'
+      : this.registrationForm.get('email').hasError('email')
+        ? 'Not a valid email'
+        : '';
   }
 
   getErrorMessagePas() {
     return this.registrationForm.get('password').hasError('minlength')
-      ? 'Password must be at least 9 characters long.' : '';
+      ? 'Password must be at least 9 characters long.'
+      : '';
   }
 }
