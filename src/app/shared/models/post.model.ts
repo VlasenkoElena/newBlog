@@ -3,6 +3,6 @@ export class Post {
     public body: string,
     public title: string,
     public image?: string,
-    public id?: number
+    public id?: string
     ) {}
 }

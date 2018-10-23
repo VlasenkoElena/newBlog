@@ -29,7 +29,7 @@ export class PostDetailComponent implements OnInit {
     this.createPost = this.fb.group({
       body: ['', Validators.required]
     });
-    this.newPost = this.route.snapshot.data['isNewPost'];
+     this.newPost = this.route.snapshot.data['isNewPost'];
 
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {

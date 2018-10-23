@@ -7,11 +7,12 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MOCK_ROUTES } from '../../test-helpers/router.mock';
 import { PostsService } from '../../shared/services/posts.servece';
 import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data, Params } from '@angular/router';
 import { MOCK_POST } from '../../test-helpers/post-id.mock';
 import { MockPostsService } from '../../shared/services/service-stub/posts.service.mock';
 
 const event = 'event';
+
 describe('PostDetailComponent', () => {
   let component: PostDetailComponent;
   let fixture: ComponentFixture<PostDetailComponent>;
@@ -25,10 +26,25 @@ describe('PostDetailComponent', () => {
       declarations: [ PostDetailComponent ],
       providers: [
         // { provide: PostsService, useValue: postsService },
-        {provide: PostsService, useClass: MockPostsService}
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
+        {provide: PostsService, useClass: MockPostsService},
+        {provide: ActivatedRoute,
+            useValue: {
+              snapshot: {
+                data: ['isNewPost'],
+                paramMap: ({
+                  get: () => {
+                  return 'id';
+                  }
+                }),
+                params: {
+                  subscribe: (fn: (value: Params) => void) => fn({
+                      tab: 0,
+                  }),
+              }
+            }
+           }}],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  })
     .compileComponents();
   }));
 
@@ -42,7 +58,7 @@ describe('PostDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call savePost metod', async() => {
+  /*it('should call savePost metod', async() => {
     spyOn(component, 'savePost');
     fixture.detectChanges();
     await fixture.whenStable();
@@ -69,7 +85,7 @@ describe('PostDetailComponent', () => {
     expect(component.loadImg).toHaveBeenCalled();
   });
 
-  /*it('should call getId metod', async() => {
+  it('should call getId metod', async() => {
     spyOn(component, 'getId');
     fixture.detectChanges();
     await fixture.whenStable();
