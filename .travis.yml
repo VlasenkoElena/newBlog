@@ -6,7 +6,7 @@ language: node_js
 node_js:
   - "10"
 
-install: travis_wait 20 mvn install  mvn -f path/to/pom.xml
+install: travis_wait 20 mvn install
 
 branches:
   only:
