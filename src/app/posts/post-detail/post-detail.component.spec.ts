@@ -7,11 +7,12 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MOCK_ROUTES } from '../../test-helpers/router.mock';
 import { PostsService } from '../../shared/services/posts.servece';
 import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data, Params } from '@angular/router';
 import { MOCK_POST } from '../../test-helpers/post-id.mock';
 import { MockPostsService } from '../../shared/services/service-stub/posts.service.mock';
 
 const event = 'event';
+
 describe('PostDetailComponent', () => {
   let component: PostDetailComponent;
   let fixture: ComponentFixture<PostDetailComponent>;
@@ -21,15 +22,29 @@ describe('PostDetailComponent', () => {
       imports: [
         RouterTestingModule.withRoutes(MOCK_ROUTES),
         ReactiveFormsModule,
-        FormsModule],
-      declarations: [ PostDetailComponent ],
+        FormsModule
+      ],
+      declarations: [PostDetailComponent],
       providers: [
         // { provide: PostsService, useValue: postsService },
-        {provide: PostsService, useClass: MockPostsService}
+        { provide: PostsService, useClass: MockPostsService },
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              data: ['isNewPost'],
+              paramMap: {
+                get: () => {
+                  return 'id';
+                }
+              }
+            },
+            params: of({})
+          }
+        }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -64,16 +79,18 @@ describe('PostDetailComponent', () => {
     spyOn(component, 'loadImg');
     fixture.detectChanges();
     await fixture.whenStable();
-    const btn = document.querySelector('.file-upload') as HTMLElement;
+    const btn = document.querySelector('label') as HTMLElement;
     btn.click();
+    await fixture.whenStable();
+    component.loadImg(event);
     expect(component.loadImg).toHaveBeenCalled();
   });
 
-  /*it('should call getId metod', async() => {
+  it('should call getId metod', async() => {
     spyOn(component, 'getId');
     fixture.detectChanges();
     await fixture.whenStable();
-    component.id = 'id';
+    component.ngOnInit();
     expect(component.getId).toHaveBeenCalled();
-  });*/
+  });
 });

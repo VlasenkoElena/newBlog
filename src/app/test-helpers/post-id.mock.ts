@@ -1,5 +1,5 @@
 export const MOCK_POST = {
-  user: {
+  author: {
     id: 'id'
   },
   body: 'body',

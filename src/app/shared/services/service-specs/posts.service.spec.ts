@@ -1,15 +1,32 @@
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { PostsService } from '../posts.servece';
-import { HttpClientTestingModule,
+import {
+  HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { Post } from '../../models/post.model';
 import { environment } from '../../../../environments/environment';
+import { Post } from '../../models/post.model';
 
-const mockPosts = [
-    {body: 'body', image: 'img'},
-    {body: 'body1', image: 'img1'}
-];
+const mockData = [{
+    author: {
+      avatar: 'ava',
+    name: 'string',
+    type: 'string',
+    id: 'id'
+    },
+    body: 'body',
+    image: 'img',
+    id: 'id',
+    title: 'title'
+  }] as Post[]
+;
+const mockNewPost = {
+  body: 'body',
+  title: 'title',
+  image: 'img'
+};
+const mockPosts = [...mockData];
+const mockPost = this.mockPosts[0];
 const id = 'id';
 
 describe('PostsService', () => {
@@ -36,13 +53,11 @@ describe('PostsService', () => {
   describe('getPost', () => {
     it('should return an Observable<Post[]>', () => {
       postsService.getPosts().subscribe(post => {
-        expect(post.length).toBe(2);
+        expect(post.length).toBe(1);
         expect(post).toEqual(mockPosts);
       });
 
-      const req = httpMock.expectOne(
-        `${environment.apiUrl}/api/posts`
-      );
+      const req = httpMock.expectOne(`${environment.apiUrl}/api/posts`);
       expect(req.request.method).toBe('GET');
       req.flush(mockPosts);
     });
@@ -50,29 +65,25 @@ describe('PostsService', () => {
 
   describe('createNewPost', () => {
     it('should return an Observable<Post>', () => {
-      postsService.createNewPost(mockPosts).subscribe(post => {
-        expect(post).toEqual(mockPosts);
+      postsService.createNewPost(mockNewPost).subscribe(post => {
+        expect(post).toEqual(mockPost);
       });
 
-      const req = httpMock.expectOne(
-        `${environment.apiUrl}/api/posts`
-      );
+      const req = httpMock.expectOne(`${environment.apiUrl}/api/posts`);
       expect(req.request.method).toBe('POST');
-      req.flush(mockPosts);
+      req.flush(mockPost);
     });
   });
 
   describe('editPost', () => {
     it('should return an Observable<Post>', () => {
-      postsService.editPost(id, mockPosts).subscribe(post => {
-        expect(post).toEqual(mockPosts);
+      postsService.editPost(id, mockPost).subscribe(post => {
+        expect(post).toEqual(mockPost);
       });
 
-      const req = httpMock.expectOne(
-        `${environment.apiUrl}/api/posts/id`
-      );
+      const req = httpMock.expectOne(`${environment.apiUrl}/api/posts/id`);
       expect(req.request.method).toBe('PUT');
-      req.flush(mockPosts);
+      req.flush(mockPost);
     });
   });
 });
