@@ -21,11 +21,9 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.tokenService.profileSubject.subscribe(data => {
-      this.user = data;
-      console.log(this.user);
-    });
-  }
+    this.tokenService.profileSubject.subscribe();
+    }
+
   editAvatar() {
     this.show = true;
   }
@@ -33,9 +31,7 @@ export class ProfileComponent implements OnInit {
   loadImg(event) {
     this.file = event.target.files[0];
     console.log(this.file);
-    this.authService.editAvatar(this.file).subscribe(data => {
-      this.user = data;
-    });
+    this.authService.editAvatar(this.file).subscribe();
     this.show = false;
    }
   }

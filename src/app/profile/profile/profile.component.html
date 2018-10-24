@@ -1,9 +1,9 @@
 <mat-card class="card">
   <!--<img mat-card-image src="{{user?.avatar}}" alt="">-->
-  <mat-card-content class="content">
+  <mat-card-content class="content" *ngIf="(user | async) as userData">
     <div>
     <div class="wrapper-img">
-      <img class="img" src="{{user?.avatar}}">
+      <img class="img" src="{{userData.avatar}}">
     </div>
     <div *ngIf="show" class="input">
       <div class="file-upload">
@@ -13,8 +13,8 @@
     </div>
     </div>
     <div class="title-content">
-    <span class="title">{{user?.name}}</span>
-    <div class="text"> {{user?.email}}</div>
+    <span class="title">{{userData.name}}</span>
+    <div class="text"> {{userData.email}}</div>
     </div>
   </mat-card-content>
   <mat-card-actions class="btn">
