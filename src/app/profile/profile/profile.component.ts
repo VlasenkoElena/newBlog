@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.tokenService.profileSubject.subscribe();
+    this.user = this.tokenService.profileSubject;
     }
 
   editAvatar() {
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
   loadImg(event) {
     this.file = event.target.files[0];
     console.log(this.file);
-    this.authService.editAvatar(this.file).subscribe();
+    this.user = this.authService.editAvatar(this.file);
     this.show = false;
    }
   }
