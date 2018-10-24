@@ -22,30 +22,29 @@ describe('PostDetailComponent', () => {
       imports: [
         RouterTestingModule.withRoutes(MOCK_ROUTES),
         ReactiveFormsModule,
-        FormsModule],
-      declarations: [ PostDetailComponent ],
+        FormsModule
+      ],
+      declarations: [PostDetailComponent],
       providers: [
         // { provide: PostsService, useValue: postsService },
-        {provide: PostsService, useClass: MockPostsService},
-        {provide: ActivatedRoute,
-            useValue: {
-              snapshot: {
-                data: ['isNewPost'],
-                paramMap: ({
-                  get: () => {
+        { provide: PostsService, useClass: MockPostsService },
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              data: ['isNewPost'],
+              paramMap: {
+                get: () => {
                   return 'id';
-                  }
-                }),
-                params: {
-                  subscribe: (fn: (value: Params) => void) => fn({
-                      tab: 0,
-                  }),
+                }
               }
-            }
-           }}],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  })
-    .compileComponents();
+            },
+            params: of({})
+          }
+        }
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -58,7 +57,7 @@ describe('PostDetailComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /*it('should call savePost metod', async() => {
+  it('should call savePost metod', async() => {
     spyOn(component, 'savePost');
     fixture.detectChanges();
     await fixture.whenStable();
@@ -80,8 +79,10 @@ describe('PostDetailComponent', () => {
     spyOn(component, 'loadImg');
     fixture.detectChanges();
     await fixture.whenStable();
-    const btn = document.querySelector('.file-upload') as HTMLElement;
+    const btn = document.querySelector('label') as HTMLElement;
     btn.click();
+    await fixture.whenStable();
+    component.loadImg(event);
     expect(component.loadImg).toHaveBeenCalled();
   });
 
@@ -89,7 +90,7 @@ describe('PostDetailComponent', () => {
     spyOn(component, 'getId');
     fixture.detectChanges();
     await fixture.whenStable();
-    component.id = 'id';
+    component.ngOnInit();
     expect(component.getId).toHaveBeenCalled();
-  });*/
+  });
 });

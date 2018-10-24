@@ -1,5 +1,5 @@
 import { Observable, of } from 'rxjs';
-import { Post } from '../../models/post.model';
+
 
 const mockPost = {
     author: {
@@ -19,10 +19,10 @@ export class MockPostsService {
     createNewPost(): Observable<any> {
         return of(mockPost);
     }
-    editPost(): Observable<any> {
+    editPost(id: string, body): Observable<any> {
         return of(mockPost);
     }
-    getPostById(): Observable<any> {
+    getPostById(id: string, body): Observable<any> {
         return of(mockPost);
     }
     addImg() {

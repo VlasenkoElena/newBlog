@@ -1,8 +1,30 @@
 export class Post {
-   constructor (
-    public body: string,
-    public title: string,
-    public image?: string,
-    public id?: string
-    ) {}
+  author: {
+    avatar: string;
+    name: string;
+    type?: string;
+    id?: string;
+  };
+  body: string;
+  title: string;
+  image?: string;
+  id?: string;
+  constructor(
+    author: {
+      avatar: string;
+      name: string;
+      type: string;
+      id: string;
+    },
+    body: string,
+    title: string,
+    image?: string,
+    id?: string
+  ) {
+      this.author = author;
+      this.body = body;
+      this.title = title;
+      this.id = id;
+      this.image = image;
+  }
 }
