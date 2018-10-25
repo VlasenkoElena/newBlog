@@ -18,6 +18,8 @@ import { TokenInterseptor } from './shared/interseptors/token-interseptor';
 import { TokenService } from './shared/services/token.service';
 import { ProfileGuard } from './shared/guards/profile.guard';
 import { CurrentUserDirective } from './shared/directives/current-user.directive';
+import { StoreModule } from '@ngrx/store';
+import { postReduser } from './store/reducers/posts.reduser';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { CurrentUserDirective } from './shared/directives/current-user.directive
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({reducers: postReduser})
   ],
   providers: [
     PostsService,
