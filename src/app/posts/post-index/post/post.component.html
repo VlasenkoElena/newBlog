@@ -3,9 +3,10 @@
     <img mat-card-image src="{{post.image}}">
   </div>
     <mat-card-content>
+      <h3>{{post.title}}</h3>
       <p class="text">
         {{post.body}}
       </p>
-      <a color="primary" [routerLink]="['/posts', post.id]">Read</a>
+      <a mat-button class="card-btn" [routerLink]="['/posts', post.id]">Read</a>
     </mat-card-content>
 </mat-card>

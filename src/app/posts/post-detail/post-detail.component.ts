@@ -27,6 +27,7 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.createPost = this.fb.group({
+      title: ['', Validators.required],
       body: ['', Validators.required]
     });
      this.newPost = this.route.snapshot.data['isNewPost'];
@@ -45,7 +46,10 @@ export class PostDetailComponent implements OnInit {
         })
       )
       .subscribe(data => {
-        this.createPost.get('body').setValue(data.body);
+        this.createPost.setValue({
+          body: data.body,
+          title: data.title
+        });
         this.post = data;
       });
   }

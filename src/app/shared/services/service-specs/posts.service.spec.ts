@@ -25,8 +25,7 @@ const mockNewPost = {
   title: 'title',
   image: 'img'
 };
-const mockPosts = [...mockData];
-const mockPost = this.mockPosts[0];
+const mockPost = mockData[0];
 const id = 'id';
 
 describe('PostsService', () => {
@@ -54,12 +53,12 @@ describe('PostsService', () => {
     it('should return an Observable<Post[]>', () => {
       postsService.getPosts().subscribe(post => {
         expect(post.length).toBe(1);
-        expect(post).toEqual(mockPosts);
+        expect(post).toEqual(mockData);
       });
 
       const req = httpMock.expectOne(`${environment.apiUrl}/api/posts`);
       expect(req.request.method).toBe('GET');
-      req.flush(mockPosts);
+      req.flush(mockData);
     });
   });
 

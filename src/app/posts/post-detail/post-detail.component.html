@@ -2,6 +2,9 @@
   <form [formGroup]="createPost" (ngSubmit)="savePost()">
     <mat-card class="container">
       <mat-card-content>
+          <mat-form-field class="form-field">
+              <input formControlName="title" matInput placeholder="Enter title">
+            </mat-form-field>
         <mat-form-field class="form-field">
           <textarea  formControlName="body" matInput placeholder="Enter your post">
         {{post?.body}}</textarea>
