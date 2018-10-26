@@ -1,16 +1,23 @@
-import * as fromPost from './posts.reduser';
-import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
+import * as fromPosts from './posts.reduser';
+import * as fromPost from './post.reduser';
+import {
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector
+} from '@ngrx/store';
 
 export interface ItemPostState {
-    posts: fromPost.PostState;
+  posts: fromPosts.PostState;
 }
 
 export const reduser: ActionReducerMap<ItemPostState> = {
-    posts: fromPost.postReduser
+  posts: fromPosts.postReduser
 };
+export const getPostsState = createFeatureSelector<fromPosts.PostState>('posts');
 export const getPostState = createFeatureSelector<fromPost.PostState>('post');
 
-export const getPosts = createSelector(
-    getPostState,
-    fromPost.getPosts
-);
+export const getPosts = createSelector(getPostsState, fromPosts.getPosts);
+
+export const getMyPost = createSelector(getPostsState, fromPosts.getMyPost);
+
+export const getPostById = createSelector(getPostState, fromPost.getPostById);

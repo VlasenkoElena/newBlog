@@ -1,14 +1,14 @@
 export class Post {
-  author: {
+  body: string;
+  title: string;
+  image?: string;
+  id?: string;
+  author?: {
     avatar: string;
     name: string;
     type?: string;
     id?: string;
   };
-  body: string;
-  title: string;
-  image?: string;
-  id?: string;
   constructor(
     author: {
       avatar: string;

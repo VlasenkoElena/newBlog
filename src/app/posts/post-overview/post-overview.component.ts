@@ -7,6 +7,10 @@ import { switchMap } from 'rxjs/operators';
 
 import { PostsService } from '../../shared/services/posts.servece';
 
+import * as fromStore from '../../store/reducers';
+import * as postsAction from '../../store/action/post.action';
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'app-post-overview',
   templateUrl: './post-overview.component.html',
@@ -14,17 +18,22 @@ import { PostsService } from '../../shared/services/posts.servece';
 })
 export class PostOverviewComponent implements OnInit {
   post: Observable<Post>;
-
+  id: string;
   constructor(
     private postsService: PostsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<fromStore.ItemPostState>
   ) {}
 
   ngOnInit() {
-    this.post = this.route.params.pipe(
-      switchMap((params: Params) => {
-        return this.postsService.getPostById(params['id']);
-      })
-    );
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.post = this.store.select(fromStore.getPostById);
+    this.store.dispatch(new postsAction.GetPostById(this.id));
+  // without redux
+  //   this.post = this.route.params.pipe(
+  //     switchMap((params: Params) => {
+  //       return this.postsService.getPostById(params['id']);
+  //     })
+  //   );
   }
 }

@@ -1,26 +1,41 @@
-import { Action } from '@ngrx/store';
+
 import * as postAction from '../action/post.action';
 import { Post } from '../../shared/models/post.model';
 
 export interface PostState {
-    data: Post[];
+    posts: Post[];
 }
 
 export const initialState: PostState =  {
-    data: []
+    posts: []
  };
 
- export function postReduser(state = initialState,
-    action: postAction.Action) {
+ export function postReduser(state = initialState, action: postAction.Action) {
         switch (action.type) {
-            case postAction.GET_ONE: {
-                const newPost: Post = action.payload;
+            case postAction.GET_POSTS: {
                return {
-                   ...state,
-                   films: {...state.data, newPost}
+                   ...state
                };
             }
-            case postAction.POST_SELECT: {
+            case postAction.GET_MY_POST: {
+                return {
+                    ...state
+                };
+            }
+            case postAction.GET_POSTS_SUCCESS: {
+                return {
+                    ...state,
+                    posts: action['payload']
+                };
+            }
+            case postAction.GET_POST_BYID: {
+                const id = action.payload;
+                return {
+                    ...state,
+                    selected: id
+                };
+            }
+            case postAction.GET_POST_BYID_SUCCESS: {
                 return {
                     ...state
                 };
@@ -30,4 +45,6 @@ export const initialState: PostState =  {
         }
     }
 
-    export const getPosts = (state: PostState) => state.data;
+    export const getPosts = (state: PostState) => state.posts;
+    export const getMyPost = (state: PostState) => state.posts;
+   // export const getPostById = (state: PostState) => state.post;

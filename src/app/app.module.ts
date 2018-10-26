@@ -18,8 +18,17 @@ import { TokenInterseptor } from './shared/interseptors/token-interseptor';
 import { TokenService } from './shared/services/token.service';
 import { ProfileGuard } from './shared/guards/profile.guard';
 import { CurrentUserDirective } from './shared/directives/current-user.directive';
-import { StoreModule } from '@ngrx/store';
-import { postReduser } from './store/reducers/posts.reduser';
+import { MetaReducer, StoreModule, } from '@ngrx/store';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { PostsEffect } from './store/effects/posts.effect';
+import { storeFreeze } from 'ngrx-store-freeze';
+import { reduser } from './store/reducers';
+
+export const metaReducers: MetaReducer<any>[] = !environment.production
+  ? [storeFreeze]
+  : [];
 
 @NgModule({
   declarations: [
@@ -37,7 +46,12 @@ import { postReduser } from './store/reducers/posts.reduser';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({reducers: postReduser})
+    StoreModule.forRoot(reduser, {metaReducers}),
+    EffectsModule.forRoot([PostsEffect]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    })
   ],
   providers: [
     PostsService,
