@@ -2,11 +2,25 @@
   <div class="img-container">
     <img mat-card-image src="{{post.image}}">
   </div>
-    <mat-card-content>
-      <h3>{{post.title}}</h3>
-      <p class="text">
-        {{post.body}}
-      </p>
+  <mat-card-content>
+    <h3>{{post.title}}</h3>
+    <span class="author">by {{post.author.name}}</span>
+    <p class="text">
+      {{post.body}}
+    </p>
+    <mat-card-actions class="btn">
       <a mat-button class="card-btn" [routerLink]="['/posts', post.id]">Read</a>
-    </mat-card-content>
+      <div *appCurrentUser="post.author.id">
+      <button class="icon-del" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" class="menuDel">
+          <button mat-menu-item (click)="deletePost()">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>  
+    </mat-card-actions>
+  </mat-card-content>
 </mat-card>

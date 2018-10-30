@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Post } from '../../shared/models/post.model';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -16,11 +16,11 @@ import { Store } from '@ngrx/store';
   templateUrl: './post-overview.component.html',
   styleUrls: ['./post-overview.component.css']
 })
-export class PostOverviewComponent implements OnInit {
+export class PostOverviewComponent implements OnInit, OnDestroy {
   post: Observable<Post>;
   id: string;
   constructor(
-    private postsService: PostsService,
+   // private postsService: PostsService,
     private route: ActivatedRoute,
     private store: Store<fromStore.ItemPostState>
   ) {}
@@ -35,5 +35,9 @@ export class PostOverviewComponent implements OnInit {
   //       return this.postsService.getPostById(params['id']);
   //     })
   //   );
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(new postsAction.DeselectPost);
   }
 }

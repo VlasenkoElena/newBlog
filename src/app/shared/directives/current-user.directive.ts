@@ -18,7 +18,6 @@ currentUser: User;
      ngOnInit() {
         this.tokenService.profileSubject
         .subscribe(data => {
-            console.log(data.id === this.appCurrentUser);
             if (data.id === this.appCurrentUser) {
                 this.viewContainer.createEmbeddedView(this.templateRef);
             } else {

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule, MatToolbarModule,  MatSidenavModule,
   MatCardModule, MatFormFieldModule, MatSelectModule,
   MatButtonModule,
-  MatInputModule, MatListModule} from '@angular/material';
+  MatInputModule, MatListModule, MatMenuModule} from '@angular/material';
 
 
 const MATERIAL_COMPONENTS = [
@@ -15,7 +15,8 @@ const MATERIAL_COMPONENTS = [
   MatSelectModule,
   MatButtonModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatMenuModule
 ];
 @NgModule({
   imports: [

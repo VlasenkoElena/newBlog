@@ -33,18 +33,14 @@ export class PostDetailComponent implements OnInit {
      this.newPost = this.route.snapshot.data['isNewPost'];
 
     this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
     if (this.id) {
       this.getId();
     }
   }
 
   getId() {
-    this.route.params
-      .pipe(
-        switchMap((params: Params) => {
-          return this.postsService.getPostById(params['id']);
-        })
-      )
+       this.postsService.getPostById(this.id)
       .subscribe(data => {
         this.createPost.setValue({
           body: data.body,
@@ -62,6 +58,7 @@ export class PostDetailComponent implements OnInit {
       });
     }
   }
+
   savePost() {
     const body = this.createPost.value;
     if (this.id) {

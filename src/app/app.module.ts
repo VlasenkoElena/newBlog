@@ -18,7 +18,7 @@ import { TokenInterseptor } from './shared/interseptors/token-interseptor';
 import { TokenService } from './shared/services/token.service';
 import { ProfileGuard } from './shared/guards/profile.guard';
 import { CurrentUserDirective } from './shared/directives/current-user.directive';
-import { MetaReducer, StoreModule, } from '@ngrx/store';
+import { MetaReducer, StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
@@ -26,7 +26,7 @@ import { PostsEffect } from './store/effects/posts.effect';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { reduser } from './store/reducers';
 
-export const metaReducers: MetaReducer<any>[] = !environment.production
+export const metaReducers: MetaReducer<any, any>[] = !environment.production
   ? [storeFreeze]
   : [];
 
@@ -35,7 +35,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     AppComponent,
     HeaderComponent,
     SidenaveComponent,
-    // CurrentUserDirective
+  //  CurrentUserDirective
   ],
   imports: [
     BrowserModule,

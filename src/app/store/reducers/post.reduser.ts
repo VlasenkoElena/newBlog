@@ -19,7 +19,15 @@ export interface PostState {
             }
             case postAction.GET_POST_BYID_SUCCESS: {
                 return {
-                    ...state
+                    ...state,
+                    post: action.payload
+                };
+            }
+            case postAction.DESELECT_POST: {
+                return {
+                    ...state,
+                    post: null,
+                    selected: null
                 };
             }
             default:
@@ -27,4 +35,4 @@ export interface PostState {
         }
     }
 
-    export const getPostById = (state: PostState) => state.post;
+    export const getPostById = (state: PostState): any => state.post;

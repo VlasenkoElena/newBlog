@@ -28,16 +28,11 @@ export const initialState: PostState =  {
                     posts: action['payload']
                 };
             }
-            case postAction.GET_POST_BYID: {
+             case postAction.DELETE_BYID: {
                 const id = action.payload;
                 return {
                     ...state,
-                    selected: id
-                };
-            }
-            case postAction.GET_POST_BYID_SUCCESS: {
-                return {
-                    ...state
+                    posts: state.posts.filter(item => item.id !== id)
                 };
             }
             default:
@@ -47,4 +42,4 @@ export const initialState: PostState =  {
 
     export const getPosts = (state: PostState) => state.posts;
     export const getMyPost = (state: PostState) => state.posts;
-   // export const getPostById = (state: PostState) => state.post;
+    export const deletePost = (state: PostState) => state.posts;
