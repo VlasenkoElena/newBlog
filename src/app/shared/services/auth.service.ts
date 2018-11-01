@@ -26,11 +26,7 @@ export class AuthService {
         map(token => {
           this.tokenService.setToken(token.auth_token);
         }),
-        switchMapTo(this.getProfile()),
-        catchError(err => {
-          console.log(err);
-          return throwError('Something bad happened; please try again later.');
-        })
+        switchMapTo(this.getProfile())
       );
   }
 
@@ -42,6 +38,7 @@ export class AuthService {
       .post<any>(`${environment.apiUrl}/api/auth/sign_in`, newJson)
       .pipe(
         map(token => {
+          console.log(token);
           this.tokenService.setToken(token.auth_token);
         }),
         switchMapTo(this.getProfile()),
@@ -72,3 +69,5 @@ export class AuthService {
     );
   }
 }
+
+

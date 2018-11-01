@@ -6,6 +6,10 @@ import { User } from '../../shared/models/user.model';
 import { TokenService } from '../../shared/services/token.service';
 import { AuthService } from '../../shared/services/auth.service';
 
+import * as fromStore from '../../store/reducers';
+import * as authAction from '../../store/action/auth.action';
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -17,7 +21,8 @@ export class ProfileComponent implements OnInit {
   file: File;
   constructor(
     public tokenService: TokenService,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<fromStore.ItemState>
   ) {}
 
   ngOnInit() {
@@ -31,7 +36,8 @@ export class ProfileComponent implements OnInit {
   loadImg(event) {
     this.file = event.target.files[0];
     console.log(this.file);
-    this.user = this.authService.editAvatar(this.file);
+    this.store.dispatch(new authAction.EditAvatar(this.file));
+    this.user = this.store.select(fromStore.userSuccess);
     this.show = false;
    }
   }

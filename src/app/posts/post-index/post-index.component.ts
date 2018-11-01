@@ -21,7 +21,7 @@ export class PostIndexComponent implements OnInit {
     private postsService: PostsService,
     private tokenService: TokenService,
     private route: ActivatedRoute,
-    private store: Store<fromStore.ItemPostState>
+    private store: Store<fromStore.ItemState>
   ) {}
 
   ngOnInit() {

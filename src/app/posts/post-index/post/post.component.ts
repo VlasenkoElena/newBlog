@@ -1,4 +1,4 @@
-import { Component,  Input, OnInit, OnDestroy } from '@angular/core';
+import { Component,  Input, OnInit} from '@angular/core';
 import { Post } from '../../../shared/models/post.model';
 
 import { Store } from '@ngrx/store';
@@ -15,7 +15,7 @@ import { async } from 'rxjs/internal/scheduler/async';
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
-  constructor(private store: Store<fromStore.ItemPostState>) { }
+  constructor(private store: Store<fromStore.ItemState>) { }
 
   ngOnInit() {
    // console.log(this.post);

@@ -25,8 +25,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { PostsEffect } from './store/effects/posts.effect';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { reduser } from './store/reducers';
+import { AuthEffect } from './store/effects/auth.effect';
 
-export const metaReducers: MetaReducer<any, any>[] = !environment.production
+export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
   : [];
 
@@ -47,10 +48,10 @@ export const metaReducers: MetaReducer<any, any>[] = !environment.production
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot(reduser, {metaReducers}),
-    EffectsModule.forRoot([PostsEffect]),
+    EffectsModule.forRoot([PostsEffect, AuthEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production,
+     // logOnly: environment.production,
     })
   ],
   providers: [

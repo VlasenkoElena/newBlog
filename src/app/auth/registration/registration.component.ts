@@ -4,6 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 
+import * as fromStore from '../../store/reducers';
+import * as authAction from '../../store/action/auth.action';
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -16,7 +20,8 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store<fromStore.ItemState>
   ) {}
 
   ngOnInit() {
@@ -34,16 +39,16 @@ export class RegistrationComponent implements OnInit {
   registrationFormInfo() {
     const registrationInfo = this.registrationForm.value;
     if (registrationInfo) {
-      this.authService.createNewUser(registrationInfo).subscribe(
+      this.store.dispatch(new authAction.CreateNewUser(registrationInfo));
+      this.store.select(fromStore.userSuccess).subscribe(
         user => {
-          this.router.navigate(['posts/my-post']);
-          console.log(user);
-        },
-        err => {
-          console.log(err);
-          alert('Something went wrong. Please try again');
-        }
-      );
+               this.router.navigate(['posts/my-post']);
+          });
+      // this.authService.createNewUser(registrationInfo).subscribe(
+      //   user => {
+      //     this.router.navigate(['posts/my-post']);
+      //     console.log(user);
+      //   });
     }
   }
 

@@ -26,7 +26,7 @@ export class PostDetailComponent implements OnInit {
   //  private postsService: PostsService,
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<fromStore.ItemPostState>
+    private store: Store<fromStore.ItemState>
   ) {}
 
   ngOnInit() {

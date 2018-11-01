@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 
+import * as fromStore from '../../store/reducers';
+import * as authAction from '../../store/action/auth.action';
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store<fromStore.ItemState>
   ) {}
 
   ngOnInit() {
@@ -28,16 +33,12 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     let formData = this.loginForm.value;
     if (formData) {
-      this.authService.logInUser(formData).subscribe(
+      this.store.dispatch(new authAction.LogIn(formData));
+      this.store.select(fromStore.userSuccess).subscribe(
         user => {
-          this.router.navigate(['posts/my-post']);
-        },
-        err => {
-          this.error = err.getErrorMessage();
-          console.log(this.error);
-          alert('Something went wrong. Please try again');
-        }
-      );
+            console.log(user);
+               this.router.navigate(['posts/my-post']);
+          });
     }
     formData = null;
   }

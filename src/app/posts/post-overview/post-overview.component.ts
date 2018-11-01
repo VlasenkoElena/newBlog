@@ -22,7 +22,7 @@ export class PostOverviewComponent implements OnInit, OnDestroy {
   constructor(
    // private postsService: PostsService,
     private route: ActivatedRoute,
-    private store: Store<fromStore.ItemPostState>
+    private store: Store<fromStore.ItemState>
   ) {}
 
   ngOnInit() {
