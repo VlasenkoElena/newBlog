@@ -26,3 +26,13 @@ export const getMyPost = createSelector(getPostsState, fromPosts.getMyPost);
 export const getPostById = createSelector(getPostState, fromPost.getPostById);
 
 export const deletePost = createSelector(getPostsState, fromPosts.deletePost);
+
+export const addNewPost = createSelector(getPostState, fromPost.addNewPost);
+
+export const editPost = createSelector(getPostsState, fromPosts.editPost);
+
+export const addImgSuccess = createSelector(getPostState, fromPost.addImgSuccess);
+
+export const deleteImg = createSelector(getPostState, fromPost.delImg);
+
+export const delImgSuccess = createSelector(getPostState, fromPost.delImgSuccess);

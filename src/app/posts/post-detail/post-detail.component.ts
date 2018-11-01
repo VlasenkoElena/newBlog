@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Post } from '../../shared/models/post.model';
-import { PostsService } from '../../shared/services/posts.servece';
-import { concatMap, switchMap, tap } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store/reducers';
+import * as postsAction from '../../store/action/post.action';
 
 @Component({
   selector: 'app-post-detail',
@@ -20,9 +23,10 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private postsService: PostsService,
+  //  private postsService: PostsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<fromStore.ItemPostState>
   ) {}
 
   ngOnInit() {
@@ -30,7 +34,7 @@ export class PostDetailComponent implements OnInit {
       title: ['', Validators.required],
       body: ['', Validators.required]
     });
-     this.newPost = this.route.snapshot.data['isNewPost'];
+    this.newPost = this.route.snapshot.data['isNewPost'];
 
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
@@ -40,59 +44,69 @@ export class PostDetailComponent implements OnInit {
   }
 
   getId() {
-       this.postsService.getPostById(this.id)
-      .subscribe(data => {
-        this.createPost.setValue({
-          body: data.body,
-          title: data.title
-        });
-        this.post = data;
-      });
+    this.store.select(fromStore.getPostById)
+    .pipe(filter(val => val !== null))
+    .subscribe(data => {
+      this.createPost.setValue({
+       body:  data.body,
+       title: data.title
+       });
+      this.post = data;
+    });
+    this.store.dispatch(new postsAction.GetPostById(this.id));
   }
 
   loadImg(event) {
     this.file = event.target.files[0];
     if (this.id !== null) {
-      this.postsService.addImg(this.id, this.file).subscribe(data => {
-        this.post = data;
-      });
+      this.store.dispatch(new postsAction.AddImg({id: this.id, file: this.file}));
+      this.store.select(fromStore.addImgSuccess).subscribe(
+        data => {
+        console.log(data);
+         this.post = data;
+        }
+      );
     }
   }
 
   savePost() {
     const body = this.createPost.value;
     if (this.id) {
-      console.log(this.id);
-      this.postsService.editPost(this.id, body).subscribe(post => {
+       this.store.select(fromStore.editPost).subscribe(
+         post => {
+          this.router.navigate(['posts/my-post']);
+         }
+       );
+       this.store.dispatch(new postsAction.EditPost({id: this.id, body}));
+      } else {
+      this.store.select(fromStore.addNewPost)
+      .subscribe(post => {
+        console.log(post);
+        this.post = post;
         this.router.navigate(['posts/my-post']);
       });
-    } else {
-      this.postsService
-        .createNewPost(body)
-        .pipe(
-          tap(res => console.log(res)),
-          concatMap(data => {
-            this.id = data.id;
-            return this.postsService.addImg(this.id, this.file);
-          })
-        )
-        .subscribe(post => {
-          this.post = post;
-          this.router.navigate(['posts/my-post']);
-        });
+      this.store.dispatch(new postsAction.AddNewPost(body));
     }
   }
 
   deletePost() {
     if (this.id) {
-      this.postsService.delPostbyId(this.id).subscribe();
+      this.store.dispatch(new postsAction.DeletePost(this.id));
+      this.store.select(fromStore.deletePost);
       this.router.navigate(['posts/my-post']);
     }
   }
 
   deleteImg() {
-    this.postsService.delImg(this.id).subscribe(data => {
-      this.post = data;
-    });
+    this.store.dispatch(new postsAction.DeleteImg(this.id));
+    this.store.select(fromStore.delImgSuccess).subscribe(
+      data => {
+        this.post = data;
+      }
+    );
+    //  without ngrx
+    // this.postsService.delImg(this.id).subscribe(data => {
+    //   this.post = data;
+    // });
   }
 }

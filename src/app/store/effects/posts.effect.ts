@@ -52,4 +52,45 @@ export class PostsEffect {
           )
         ))
   );
+
+  @Effect()
+  addNewPost$ = this.actions.pipe(
+    ofType<postsAction.AddNewPost>(postsAction.ADD_NEW_POST),
+    switchMap(action =>
+      this.postsService.createNewPost(action.payload).pipe(
+        map(() => new postsAction.AddSuccess()),
+        catchError(error => of(new postsAction.GetPostsFail(error)))
+        )
+      )
+  );
+
+  @Effect()
+  editPost$ = this.actions.pipe(
+    ofType<postsAction.EditPost>(postsAction.EDIT_POST),
+    switchMap(action =>
+      this.postsService.editPost(action.payload.id, action.payload.body).pipe(
+        map(post => new postsAction.GetPostByIdSuccess(post)),
+        catchError(error => of(new postsAction.GetPostsFail(error)))
+      ))
+  );
+
+  @Effect()
+  addImg$ = this.actions.pipe(
+    ofType<postsAction.AddImg>(postsAction.ADD_IMG),
+    switchMap(action =>
+      this.postsService.addImg(action.payload.id, action.payload.file).pipe(
+        map(post => new postsAction.AddImgSuccess(post)),
+        catchError(error => of(new postsAction.GetPostsFail(error)))
+      ))
+  );
+
+  @Effect()
+  DeleteImg = this.actions.pipe(
+    ofType<postsAction.DeleteImg>(postsAction.DELETE_IMG),
+    switchMap(action =>
+      this.postsService.delImg(action.payload).pipe(
+        map(post => new postsAction.DelImgSuccess(post)),
+        catchError(error => of(new postsAction.GetPostsFail(error)))
+      ))
+  );
 }

@@ -6,7 +6,7 @@ export interface PostState {
     post: Post | null;
 }
 
- export const initialState: PostState = { post: null};
+ export const initialState: PostState = { post: null };
 
  export function postReduser(state = initialState, action: postAction.Action) {
         switch (action.type) {
@@ -26,8 +26,36 @@ export interface PostState {
             case postAction.DESELECT_POST: {
                 return {
                     ...state,
-                    post: null,
+                      post: null,
                     selected: null
+                };
+            }
+            case postAction.ADD_SUCCESS: {
+                return {
+                    ...state
+                };
+            }
+            case postAction.ADD_IMG_SUCCESS: {
+                return {
+                    ...state,
+                    post: action.payload
+                };
+            }
+            // case postAction.EDIT_POST: {
+            //     return {
+            //         ...state
+            //     };
+            // }
+            case postAction.DELETE_IMG_SUCCESS: {
+                return {
+                    ...state,
+                    post: action.payload
+                };
+            }
+            case postAction.ADD_IMG: {
+                return {
+                       post: action.payload,
+                    ...state
                 };
             }
             default:
@@ -36,3 +64,7 @@ export interface PostState {
     }
 
     export const getPostById = (state: PostState): any => state.post;
+    export const addNewPost = (state: PostState): any => state.post;
+    export const addImgSuccess = (state: PostState) => state.post;
+    export const delImg = (state: PostState) => state.post;
+    export const delImgSuccess = (state: PostState) => state.post;

@@ -23,8 +23,6 @@ currentUser: User;
             } else {
                 this.viewContainer.clear();
             }
-            console.log(this.appCurrentUser);
-            console.log(data.id);
         });
     }
 

@@ -43,3 +43,4 @@ export const initialState: PostState =  {
     export const getPosts = (state: PostState) => state.posts;
     export const getMyPost = (state: PostState) => state.posts;
     export const deletePost = (state: PostState) => state.posts;
+    export const editPost = (state: PostState) =>  state.posts;
