@@ -1,4 +1,4 @@
-<mat-card class="card" *ngIf="user | async as userData">
+<mat-card class="card" *ngIf="(user | async) as userData">
     <div class="wrapper-img">
       <img mat-card-image class="img" src="{{userData.avatar}}">
     </div>

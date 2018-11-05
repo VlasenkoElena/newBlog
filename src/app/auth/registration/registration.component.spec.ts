@@ -7,11 +7,15 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
 import { MOCK_ROUTES } from '../../test-helpers/router.mock';
+import { TestStore } from '../../store/test/test.store';
+import { AuthState } from '../../store/reducers/auth.reduser';
+import { Store } from '@ngrx/store';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
   let authService;
+  let testStore: TestStore<AuthState>;
 
   beforeEach(async(() => {
 
@@ -28,7 +32,8 @@ describe('RegistrationComponent', () => {
         RegistrationComponent
       ],
       providers: [
-        {provide: AuthService, useValue: authService}],
+        {provide: AuthService, useValue: authService},
+        {provide: Store, useClass: TestStore}],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
@@ -58,6 +63,5 @@ describe('RegistrationComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
      expect(component.registrationFormInfo).toHaveBeenCalled();
-    // expect(router.navigate).toHaveBeenCalledWith(['posts/my-post']);
  });
 });

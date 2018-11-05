@@ -26,7 +26,6 @@ export class PostIndexComponent implements OnInit {
 
   ngOnInit() {
     this.myPost = this.route.snapshot.data['isMyPost'];
-    console.log(this.myPost);
     if (this.myPost) {
       this.getMyPost();
     } else {
@@ -34,21 +33,12 @@ export class PostIndexComponent implements OnInit {
     }
   }
   getPost() {
-    // without redux
-      /*this.postsService.getPosts().subscribe(data => {
-        this.posts = data;
-        console.log(this.posts);
-      });*/
       this.posts$ = this.store.select(fromStore.getPosts);
       this.store.dispatch(new postsAction.GetPosts());
   }
 
   getMyPost() {
     if (this.tokenService.getToken()) {
-      /*this.postsService.getMyPosts().subscribe(data => {
-        this.posts$ = data;
-        console.log(this.posts);
-      });*/
       this.posts$ = this.store.select(fromStore.getMyPost);
       this.store.dispatch(new postsAction.GetMyPost());
     }

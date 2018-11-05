@@ -37,7 +37,6 @@ export class PostDetailComponent implements OnInit {
     this.newPost = this.route.snapshot.data['isNewPost'];
 
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
     if (this.id) {
       this.getId();
     }

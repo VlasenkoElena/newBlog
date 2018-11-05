@@ -25,7 +25,6 @@ export class UserSuccess implements Action {
 }
 export class GetProfile implements Action {
     readonly type = GET_PROFILE;
-    constructor(public payload: User) {}
 }
 export class EditAvatar implements Action {
     readonly type = EDIT_AVATAR;

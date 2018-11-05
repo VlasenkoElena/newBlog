@@ -26,7 +26,9 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user = this.tokenService.profileSubject;
+    this.store.dispatch(new authAction.GetProfile);
+    this.user = this.store.select(fromStore.userSuccess);
+    // this.user = this.tokenService.profileSubject;
     }
 
   editAvatar() {
@@ -35,7 +37,6 @@ export class ProfileComponent implements OnInit {
 
   loadImg(event) {
     this.file = event.target.files[0];
-    console.log(this.file);
     this.store.dispatch(new authAction.EditAvatar(this.file));
     this.user = this.store.select(fromStore.userSuccess);
     this.show = false;

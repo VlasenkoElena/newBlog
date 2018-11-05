@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import { AuthService } from '../../shared/services/auth.service';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import * as authAction from '../action/auth.action';
@@ -26,23 +26,34 @@ export class AuthEffect {
 
   @Effect()
   logIn$: Observable<Action> = this.actions.pipe(
-      ofType<authAction.LogIn>(authAction.LOG_IN),
-      switchMap(action => {
-          return this.authService.logInUser(action.payload).pipe(
-              map(user => new authAction.UserSuccess(user)),
-              catchError(error => of(new authAction.GetAuthFail(error)))
-          );
-      })
+    ofType<authAction.LogIn>(authAction.LOG_IN),
+    switchMap(action => {
+      return this.authService.logInUser(action.payload).pipe(
+        map(user => new authAction.UserSuccess(user)),
+        catchError(error => of(new authAction.GetAuthFail(error)))
+      );
+    })
   );
 
   @Effect()
   editAvatar$ = this.actions.pipe(
-      ofType<authAction.EditAvatar>(authAction.EDIT_AVATAR),
-      switchMap(action => {
-          return this.authService.editAvatar(action.payload).pipe(
-              map(user => new authAction.UserSuccess(user)),
-              catchError(error => of(new authAction.GetAuthFail(error)))
-          );
-      })
-  )
+    ofType<authAction.EditAvatar>(authAction.EDIT_AVATAR),
+    switchMap(action => {
+      return this.authService.editAvatar(action.payload).pipe(
+        map(user => new authAction.UserSuccess(user)),
+        catchError(error => of(new authAction.GetAuthFail(error)))
+      );
+    })
+  );
+
+  @Effect()
+  getProfile$ = this.actions.pipe(
+    ofType<authAction.GetProfile>(authAction.GET_PROFILE),
+    switchMap(() => {
+      return this.authService.getProfile().pipe(
+        map(user => new authAction.UserSuccess(user)),
+        catchError(error => of(new authAction.GetAuthFail(error)))
+      );
+    })
+  );
 }

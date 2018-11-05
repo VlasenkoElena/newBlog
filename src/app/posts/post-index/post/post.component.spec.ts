@@ -3,17 +3,27 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PostComponent } from './post.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CurrentUserDirective } from '../../../shared/directives/current-user.directive';
+import { MaterialModule } from '../../../material/material.module';
+import { TestStore } from '../../../store/test/test.store';
+import { PostState } from '../../../store/reducers/post.reduser';
+import { Store } from '@ngrx/store';
 
 describe('PostComponent', () => {
   let component: PostComponent;
   let fixture: ComponentFixture<PostComponent>;
+  let store: TestStore<PostState>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MaterialModule,
       ],
-      declarations: [ PostComponent ],
+      providers: [
+        {provide: Store, useClass: TestStore}
+      ],
+      declarations: [ PostComponent, CurrentUserDirective ],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();

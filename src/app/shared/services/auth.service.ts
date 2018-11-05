@@ -38,7 +38,6 @@ export class AuthService {
       .post<any>(`${environment.apiUrl}/api/auth/sign_in`, newJson)
       .pipe(
         map(token => {
-          console.log(token);
           this.tokenService.setToken(token.auth_token);
         }),
         switchMapTo(this.getProfile()),

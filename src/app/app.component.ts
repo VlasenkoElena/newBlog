@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './shared/services/auth.service';
 import { TokenService } from './shared/services/token.service';
 
+import { Store } from '@ngrx/store';
+import * as fromStore from './store/reducers';
+import * as authAction from './store/action/auth.action';
+
 
 
 @Component({
@@ -11,10 +15,13 @@ import { TokenService } from './shared/services/token.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, private tokenService: TokenService) {}
+  constructor(private authService: AuthService,
+              private tokenService: TokenService,
+              private store: Store<fromStore.ItemState>) {}
   ngOnInit() {
     if (this.tokenService.isLogIn()) {
-    this.authService.getProfile().subscribe();
+      this.store.dispatch(new authAction.GetProfile());
+      this.store.select(fromStore.userSuccess).subscribe();
     }
   }
 }

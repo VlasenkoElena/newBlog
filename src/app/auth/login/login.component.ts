@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   error;
   constructor(
-    private authService: AuthService,
+   // private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
     private store: Store<fromStore.ItemState>

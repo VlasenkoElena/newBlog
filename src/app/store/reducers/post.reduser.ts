@@ -26,7 +26,7 @@ export interface PostState {
             case postAction.DESELECT_POST: {
                 return {
                     ...state,
-                      post: null,
+                    post: null,
                     selected: null
                 };
             }

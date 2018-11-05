@@ -7,10 +7,14 @@ import { TokenService } from '../../shared/services/token.service';
 import { TokenServiseStub } from '../../shared/services/service-stub/token-stub.servise';
 import { AuthService } from '../../shared/services/auth.service';
 import { of } from 'rxjs';
+import { TestStore } from '../../store/test/test.store';
+import { AuthState } from '../../store/reducers/auth.reduser';
+import { Store } from '@ngrx/store';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
+  let store: TestStore<AuthState>;
   let authService;
 
   beforeEach(async(() => {
@@ -21,7 +25,8 @@ describe('ProfileComponent', () => {
       declarations: [ProfileComponent],
       providers: [
         { provide: TokenService, useClass: TokenServiseStub },
-        { provide: AuthService, useValue: authService }
+        { provide: AuthService, useValue: authService },
+        {provide: Store, useClass: TestStore}
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();

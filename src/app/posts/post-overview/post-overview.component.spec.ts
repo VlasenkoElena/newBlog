@@ -11,11 +11,15 @@ import { TokenService } from '../../shared/services/token.service';
 import { TokenServiseStub } from '../../shared/services/service-stub/token-stub.servise';
 import { ActivatedRoute } from '@angular/router';
 import { MOCK_POST } from '../../test-helpers/post-id.mock';
+import { TestStore } from '../../store/test/test.store';
+import { PostState } from '../../store/reducers/posts.reduser';
+import { Store } from '@ngrx/store';
 
 describe('PostOverviewComponent', () => {
   let component: PostOverviewComponent;
   let fixture: ComponentFixture<PostOverviewComponent>;
   let postsService;
+  let store: TestStore<PostState>;
 
   beforeEach(async(() => {
     postsService = jasmine.createSpyObj('PostsService', ['getPostById']);
@@ -24,10 +28,20 @@ describe('PostOverviewComponent', () => {
       imports: [RouterTestingModule.withRoutes(MOCK_ROUTES)],
       declarations: [PostOverviewComponent, CurrentUserDirective],
       providers: [
+        {provide: Store, useClass: TestStore},
         {provide: PostsService, useValue: postsService },
         {provide: TokenService, useClass: TokenServiseStub},
-         {provide: ActivatedRoute, useValue: {
-          params: of({ id: 'test' })}
+         {provide: ActivatedRoute,
+          useValue: {
+            snapshot: {
+              paramMap: {
+                get: () => {
+                  return 'id';
+                }
+              }
+            },
+            params: of({})
+          }
          }],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();

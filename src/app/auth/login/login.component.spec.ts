@@ -7,10 +7,15 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { MOCK_ROUTES } from '../../test-helpers/router.mock';
+import { TestStore } from '../../store/test/test.store';
+import { AuthState } from '../../store/reducers/auth.reduser';
+import { Store } from '@ngrx/store';
+import * as authAction from '../../store/action/auth.action';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let store: TestStore<AuthState>;
   let authService;
 
   beforeEach(async(() => {
@@ -20,6 +25,7 @@ describe('LoginComponent', () => {
       imports: [RouterTestingModule.withRoutes(MOCK_ROUTES), ReactiveFormsModule],
       declarations: [LoginComponent],
       providers: [
+        {provide: Store, useClass: TestStore},
         { provide: AuthService, useValue: authService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -49,25 +55,4 @@ describe('LoginComponent', () => {
     btn.click();
     expect(component.onSubmit).toHaveBeenCalled();
   });
-
-  it('should call logInUser', async () => {
-    component.loginForm.patchValue({
-      email: '1@user.com',
-      password: '12345678'
-    });
-    fixture.detectChanges();
-    await fixture.whenStable();
-    const btn = document.querySelector('button[type=submit]') as HTMLElement;
-    expect(component.loginForm.valid).toBeTruthy();
-    btn.click();
-    expect(authService.logInUser).toHaveBeenCalledWith({
-      email: '1@user.com',
-      password: '12345678'
-    });
-  });
-
-  /*it('should navigate when logIn', async () => {
-    const spy = this.routerSpy.navigate as jasmine.Spy;
-    expect(spy).toBe('posts/my-post');
-  });*/
 });

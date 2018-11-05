@@ -26,6 +26,7 @@ import { PostsEffect } from './store/effects/posts.effect';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { reduser } from './store/reducers';
 import { AuthEffect } from './store/effects/auth.effect';
+import { CommonModule } from '@angular/common';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -40,6 +41,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     RouterModule,
     AppRoutingModule,
     MaterialModule,
