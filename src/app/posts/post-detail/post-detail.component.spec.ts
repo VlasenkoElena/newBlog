@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostDetailComponent } from './post-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MOCK_ROUTES } from '../../test-helpers/router.mock';
 import { PostsService } from '../../shared/services/posts.servece';
@@ -13,6 +13,8 @@ import { MockPostsService } from '../../shared/services/service-stub/posts.servi
 import { TestStore } from '../../store/test/test.store';
 import { PostState } from '../../store/reducers/post.reduser';
 import { Store } from '@ngrx/store';
+import * as fromStore from '../../store/reducers';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 const event = 'event';
 
@@ -30,7 +32,7 @@ describe('PostDetailComponent', () => {
       ],
       declarations: [PostDetailComponent],
       providers: [
-        // { provide: PostsService, useValue: postsService },
+       // { provide: PostsService, useValue: postsService },
         { provide: PostsService, useClass: MockPostsService },
         {provide: Store, useClass: TestStore},
         {
@@ -52,13 +54,21 @@ describe('PostDetailComponent', () => {
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(async() => {
     fixture = TestBed.createComponent(PostDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
+  // it('should create', async() => {
+  //   fixture.detectChanges();
+  //   await fixture.whenStable();
+  //   store.select(fromStore.getPostById).subscribe(() => {
+  //     component.createPost.setValue({
+  //       body:  'body',
+  //       title: 'title'
+  //     });
+  //   });
   //   expect(component).toBeTruthy();
   // });
 

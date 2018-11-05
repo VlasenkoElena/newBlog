@@ -1,15 +1,17 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export class TestStore<T> {
-  private state: BehaviorSubject<T> = new BehaviorSubject(undefined);
+  public state: BehaviorSubject<T> = new BehaviorSubject(undefined);
 
-  setState(data: T) {
+ public setState(data: T) {
     this.state.next(data);
   }
 
-  select(selector?: any): Observable<T> {
+ public select(selector?: any): Observable<T> {
     return this.state.asObservable();
+     let body = 'body';
+     let title = 'title';
   }
 
-  dispatch(action: any) {}
+ public dispatch(action: any) {}
 }

@@ -41,11 +41,6 @@ export interface PostState {
                     post: action.payload
                 };
             }
-            // case postAction.EDIT_POST: {
-            //     return {
-            //         ...state
-            //     };
-            // }
             case postAction.DELETE_IMG_SUCCESS: {
                 return {
                     ...state,
