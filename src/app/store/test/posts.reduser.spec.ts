@@ -21,7 +21,7 @@ describe('PostReduser', () => {
     const action = new fromAction.GetPostsSuccess(posts);
     const state = fromPosts.postReduser(initialState, action);
 
-    expect(state.posts).toBe(action['payload']);
+    expect(state.posts).toBe(posts);
   });
 
   it('should return myPosts', () => {

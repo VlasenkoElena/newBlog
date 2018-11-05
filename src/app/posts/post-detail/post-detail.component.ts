@@ -8,7 +8,6 @@ import { filter } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store/reducers';
 import * as postsAction from '../../store/action/post.action';
-import { PostsService } from '../../shared/services/posts.servece';
 
 @Component({
   selector: 'app-post-detail',
@@ -24,7 +23,6 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private postsService: PostsService,
     private router: Router,
     private route: ActivatedRoute,
     private store: Store<fromStore.ItemState>
@@ -62,7 +60,6 @@ export class PostDetailComponent implements OnInit {
       this.store.dispatch(new postsAction.AddImg({id: this.id, file: this.file}));
       this.store.select(fromStore.addImgSuccess).subscribe(
         data => {
-        console.log(data);
          this.post = data;
         }
       );
