@@ -6,13 +6,14 @@ language: node_js
 node_js:
   - "10"
 
+# safelist
 branches:
   only:
-    - master
+  - master
+  - ngrx
 
 before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng build --prod --aot
   - npm run test
