@@ -12,7 +12,7 @@ describe('PostReduser', () => {
       avatar: 'avatar',
       name: 'name',
       type: 'type',
-      id: 'sreing'
+      id: 'string'
     }
   }];
 

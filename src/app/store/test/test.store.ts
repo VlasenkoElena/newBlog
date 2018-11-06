@@ -9,8 +9,8 @@ export class TestStore<T> {
 
  public select(selector?: any): Observable<T> {
     return this.state.asObservable();
-     let body = 'body';
-     let title = 'title';
+    //  let body = 'body';
+    //  let title = 'title';
   }
 
  public dispatch(action: any) {}
